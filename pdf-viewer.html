@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualizador de PDF - FBBR_Odonto</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .pdf-viewer-container {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            max-height: 100vh;
+            overflow: hidden;
+        }
+        
+        .pdf-controls {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            z-index: 10;
+        }
+        
+        .pdf-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin: 0;
+            flex: 1;
+        }
+        
+        .pdf-buttons {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .pdf-btn {
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .pdf-btn:hover {
+            background-color: #c19215;
+            transform: translateY(-2px);
+        }
+        
+        .pdf-frame {
+            flex: 1;
+            width: 100%;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="pdf-viewer-container">
+        <div class="pdf-controls">
+            <h1 class="pdf-title" id="pdf-title">Visualizando PDF</h1>
+            <div class="pdf-buttons">
+                <button class="pdf-btn" id="back-btn">
+                    <i class="fas fa-arrow-left"></i> Voltar
+                </button>
+                <button class="pdf-btn" id="download-btn">
+                    <i class="fas fa-download"></i> Download
+                </button>
+            </div>
+        </div>
+        <iframe class="pdf-frame" id="pdf-frame" src=""></iframe>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Obter parâmetros da URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const pdfPath = urlParams.get('pdf');
+            const pdfTitle = urlParams.get('title') || 'Documento PDF';
+            
+            // Atualizar título
+            document.getElementById('pdf-title').textContent = pdfTitle;
+            
+            // Configurar iframe
+            if (pdfPath) {
+                document.getElementById('pdf-frame').src = pdfPath;
+            } else {
+                document.getElementById('pdf-frame').src = 'about:blank';
+                alert('Caminho do PDF não especificado!');
+            }
+            
+            // Configurar botão de voltar
+            document.getElementById('back-btn').addEventListener('click', function() {
+                const referrer = document.referrer;
+                if (referrer && referrer.includes(window.location.hostname)) {
+                    window.history.back();
+                } else {
+                    window.location.href = '../index.html';
+                }
+            });
+            
+            // Configurar botão de download
+            document.getElementById('download-btn').addEventListener('click', function() {
+                if (pdfPath) {
+                    const link = document.createElement('a');
+                    link.href = pdfPath;
+                    link.download = pdfPath.split('/').pop();
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                }
+            });
+        });
+    </script>
+</body>
+</html>

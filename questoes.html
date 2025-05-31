@@ -1,0 +1,756 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questões de Odontologia - FBBR_Odonto</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <meta name="description" content="Pratique com questões de provas anteriores e teste seus conhecimentos em todas as especialidades odontológicas.">
+    <meta name="author" content="Harrison Costa">
+    <style>
+        .question-container {
+            background-color: #fff;
+            border: 1px solid var(--vintage-border);
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            overflow: hidden;
+            box-shadow: 0 4px 15px var(--shadow-color);
+            transition: all 0.3s ease;
+        }
+        
+        .question-container:hover {
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .question-header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 3px solid var(--secondary-color);
+        }
+        
+        .question-header h3 {
+            margin: 0;
+            color: white;
+            font-family: 'Baskerville', serif;
+        }
+        
+        .question-meta {
+            display: flex;
+            gap: 15px;
+            font-size: 0.9rem;
+        }
+        
+        .question-meta span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .question-meta i {
+            color: var(--secondary-color);
+        }
+        
+        .question-content {
+            padding: 1.5rem;
+        }
+        
+        .question-text {
+            font-family: 'Baskerville', serif;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+        
+        .question-options {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .question-option {
+            padding: 1rem;
+            margin-bottom: 0.5rem;
+            border: 1px solid #e0d9c5;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .question-option:hover {
+            background-color: #f9f7f0;
+        }
+        
+        .question-option.selected {
+            background-color: #f0f7ff;
+            border-color: var(--accent-color);
+        }
+        
+        .question-option.correct {
+            background-color: #f0fff0;
+            border-color: #4caf50;
+        }
+        
+        .question-option.incorrect {
+            background-color: #fff0f0;
+            border-color: #f44336;
+        }
+        
+        .option-marker {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            border: 2px solid #ddd;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+        
+        .question-option.selected .option-marker {
+            border-color: var(--accent-color);
+            background-color: var(--accent-color);
+            color: white;
+        }
+        
+        .question-option.correct .option-marker {
+            border-color: #4caf50;
+            background-color: #4caf50;
+            color: white;
+        }
+        
+        .question-option.incorrect .option-marker {
+            border-color: #f44336;
+            background-color: #f44336;
+            color: white;
+        }
+        
+        .question-footer {
+            padding: 1rem 1.5rem;
+            background-color: #f9f9f9;
+            border-top: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .question-explanation {
+            background-color: #f9f7f0;
+            border: 1px solid #e0d9c5;
+            border-radius: 6px;
+            padding: 1rem;
+            margin-top: 1.5rem;
+            display: none;
+        }
+        
+        .question-explanation.show {
+            display: block;
+        }
+        
+        .question-explanation h4 {
+            margin-top: 0;
+            color: var(--primary-color);
+            font-family: 'Baskerville', serif;
+        }
+        
+        .filter-container {
+            background-color: #f9f7f0;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            border: 1px solid var(--vintage-border);
+        }
+        
+        .filter-title {
+            font-family: 'Baskerville', serif;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+        
+        .filter-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .filter-btn {
+            background-color: white;
+            border: 1px solid var(--primary-color);
+            color: var(--primary-color);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .filter-btn:hover, .filter-btn.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 2rem;
+            gap: 5px;
+        }
+        
+        .pagination-btn {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid #ddd;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .pagination-btn:hover, .pagination-btn.active {
+            background-color: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+        
+        .progress-container {
+            background-color: #f9f7f0;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            border: 1px solid var(--vintage-border);
+            text-align: center;
+        }
+        
+        .progress-title {
+            font-family: 'Baskerville', serif;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+        
+        .progress-bar {
+            height: 10px;
+            background-color: #e0e0e0;
+            border-radius: 5px;
+            margin: 1rem 0;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+        
+        .progress-stats {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 1rem;
+        }
+        
+        .stat-item {
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <!-- Cabeçalho -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <img src="assets/images/logo.png" alt="FBBR_Odonto Logo">
+                <span class="logo-text">FBBR_Odonto</span>
+            </div>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav>
+                <ul id="menu">
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="especialidades.html">Especialidades</a></li>
+                    <li><a href="resumos.html">Resumos</a></li>
+                    <li><a href="questoes.html" class="active">Questões</a></li>
+                    <li><a href="contato.html">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Questões de Odontologia</h1>
+            <p>Pratique com questões de provas anteriores e teste seus conhecimentos em todas as especialidades odontológicas.</p>
+        </div>
+    </section>
+
+    <!-- Conteúdo Principal -->
+    <section class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Banco de Questões</h2>
+            </div>
+            
+            <!-- Progresso -->
+            <div class="progress-container">
+                <h3 class="progress-title">Seu Progresso</h3>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill" style="width: 0%"></div>
+                </div>
+                <div class="progress-stats">
+                    <div class="stat-item">
+                        <div class="stat-value" id="questions-answered">0</div>
+                        <div class="stat-label">Respondidas</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="questions-correct">0</div>
+                        <div class="stat-label">Corretas</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-value" id="questions-total">10</div>
+                        <div class="stat-label">Total</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Filtros -->
+            <div class="filter-container">
+                <h3 class="filter-title">Filtrar por Especialidade:</h3>
+                <div class="filter-options">
+                    <button class="filter-btn active" data-filter="all">Todas</button>
+                    <button class="filter-btn" data-filter="endodontia">Endodontia</button>
+                    <button class="filter-btn" data-filter="ortodontia">Ortodontia</button>
+                    <button class="filter-btn" data-filter="periodontia">Periodontia</button>
+                    <button class="filter-btn" data-filter="protese">Prótese</button>
+                    <button class="filter-btn" data-filter="anestesiologia">Anestesiologia</button>
+                    <button class="filter-btn" data-filter="cariologia">Cariologia</button>
+                </div>
+            </div>
+            
+            <!-- Questões -->
+            <div class="questions-list">
+                <!-- Questão 1 -->
+                <div class="question-container" data-category="endodontia">
+                    <div class="question-header">
+                        <h3>Questão 1</h3>
+                        <div class="question-meta">
+                            <span><i class="fas fa-folder"></i> Endodontia</span>
+                            <span><i class="fas fa-graduation-cap"></i> Média</span>
+                        </div>
+                    </div>
+                    <div class="question-content">
+                        <div class="question-text">
+                            <p>Qual das seguintes estruturas anatômicas NÃO faz parte do complexo pulpo-dentinário?</p>
+                        </div>
+                        <ul class="question-options">
+                            <li class="question-option" data-correct="false">
+                                <div class="option-marker">A</div>
+                                <div>Odontoblastos</div>
+                            </li>
+                            <li class="question-option" data-correct="false">
+                                <div class="option-marker">B</div>
+                                <div>Fibroblastos</div>
+                            </li>
+                            <li class="question-option" data-correct="false">
+                                <div class="option-marker">C</div>
+                                <div>Células mesenquimais indiferenciadas</div>
+                            </li>
+                            <li class="question-option" data-correct="true">
+                                <div class="option-marker">D</div>
+                                <div>Ameloblastos</div>
+                            </li>
+                            <li class="question-option" data-correct="false">
+                                <div class="option-marker">E</div>
+                                <div>Células dendríticas</div>
+                            </li>
+                        </ul>
+                        <div class="question-explanation">
+                            <h4>Explicação:</h4>
+                            <p>Os ameloblastos são células responsáveis pela formação do esmalte dentário e não fazem parte do complexo pulpo-dentinário. Eles desaparecem após a erupção do dente. O complexo pulpo-dentinário é composto por odontoblastos, fibroblastos, células mesenquimais indiferenciadas, células dendríticas, macrófagos, linfócitos, entre outras células.</p>
+                        </div>
+                    </div>
+                    <div class="question-footer">
+                        <button class="nav-btn check-answer">Verificar Resposta</button>
+                        <button class="nav-btn show-explanation" style="display: none;">Ver Explicação</button>
+                    </div>
+                </div>
+                
+                <!-- Questão 2 -->
+                <div class="question-container" data-category="ortodontia">
+                    <div class="question-header">
+                        <h3>Questão 2</h3>
+                        <div class="question-meta">
+                            <span><i class="fas fa-folder"></i> Ortodontia</span>
+                            <span><i class="fas fa-graduation-cap"></i> Difícil</span>
+                        </div>
+                    </div>
+                    <div class="question-content">
+                        <div class="question-text">
+                            <p>Na classificação de Angle, a má oclusão Classe II divisão 1 é caracterizada por:</p>
+                        </div>
+                        <ul class="question-options">
+                            <li class="question-option" data-correct="false">
+                                <div class="option-marker">A</div>
+                                <div>Relação molar normal com incisivos em mordida cruzada</div>
+                            </li>
+                            <li class="question-option" data-correct="true">
+                                <div class="option-marker">B</div>
+                                <div>Molar inferior posicionado distalmente ao superior com incisivos superiores vestibularizados</div>
+                            </li>
+                            <li class="question-option" data-correct="false">
+                                <div class="option-marker">C</div>
+                                <div>Molar inferior posicionado distalmente ao superior com incisivos superiores lingualizados</div>
+                            </li>
+                            <li class="question-option" data-correct="false">
+                                <div class="option-marker">D</div>
+                                <div>Molar inferior posicionado mesialmente ao superior</div>
+                            </li>
+                            <li class="question-option" data-correct="false">
+                                <div class="option-marker">E</div>
+                                <div>Relação molar normal com mordida aberta anterior</div>
+                            </li>
+                        </ul>
+                        <div class="question-explanation">
+                            <h4>Explicação:</h4>
+                            <p>Na classificação de Angle, a má oclusão Classe II divisão 1 é caracterizada pela relação distal do molar inferior em relação ao superior (o sulco mesiovestibular do primeiro molar inferior está distalizado em relação à cúspide mesiovestibular do primeiro molar superior), associada à vestibularização dos incisivos superiores, geralmente com overjet aumentado.</p>
+                        </div>
+                    </div>
+                    <div class="question-footer">
+                        <button class="nav-btn check-answer">Verificar Resposta</button>
+                        <button class="nav-btn show-explanation" style="display: none;">Ver Explicação</button>
+                    </div>
+                </div>
+                
+                <!-- Questão 3 -->
+                <div class="question-container" data-category="periodontia">
+                    <div class="question-header">
+                        <h3>Questão 3</h3>
+                        <div class="question-meta">
+                            <span><i class="fas fa-folder"></i> Periodontia</span>
+                            <span><i class="fas fa-graduation-cap"></i> Média</span>
+                        </div>
+                    </div>
+                    <div class="question-content">
+                        <div class="question-text">
+                            <p>De acordo com a nova classificação das doenças periodontais (2018), a periodontite é classificada em estágios que vão de I a IV. O estágio IV é caracterizado por:</p>
+                        </div>
+                        <ul class="question-options">
+                            <li class="question-option" data-correct="false">
+                                <div class="option-marker">A</div>
+                                <div>Perda de inserção clínica de 1-2 mm</div>
+                            </li>
+                            <li class="question-option" data-correct="false">
+                                <div class="option-marker">B</div>
+                                <div>Perda óssea radiográfica no terço coronal da raiz</div>
+                            </li>
+                            <li class="question-option" data-correct="false">
+                                <div class="option-marker">C</div>
+                                <div>Perda de até 4 dentes por razões periodontais</div>
+                            </li>
+                            <li class="question-option" data-correct="true">
+                                <div class="option-marker">D</div>
+                                <div>Perda de inserção clínica ≥ 5 mm com possibilidade de perda dentária e necessidade de reabilitação complexa</div>
+                            </li>
+                            <li class="question-option" data-correct="false">
+                                <div class="option-marker">E</div>
+                                <div>Ausência de perda óssea radiográfica</div>
+                            </li>
+                        </ul>
+                        <div class="question-explanation">
+                            <h4>Explicação:</h4>
+                            <p>De acordo com a classificação de 2018, o estágio IV da periodontite é caracterizado por perda de inserção clínica ≥ 5 mm, perda óssea radiográfica estendendo-se até o terço médio ou apical da raiz, perda de 5 ou mais dentes devido à periodontite, e necessidade de reabilitação complexa devido à disfunção mastigatória, trauma oclusal secundário e defeitos de rebordo avançados.</p>
+                        </div>
+                    </div>
+                    <div class="question-footer">
+                        <button class="nav-btn check-answer">Verificar Resposta</button>
+                        <button class="nav-btn show-explanation" style="display: none;">Ver Explicação</button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Paginação -->
+            <div class="pagination">
+                <div class="pagination-btn active">1</div>
+                <div class="pagination-btn">2</div>
+                <div class="pagination-btn">3</div>
+                <div class="pagination-btn">4</div>
+                <div class="pagination-btn">...</div>
+                <div class="pagination-btn">10</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DON_FBBR IA Chat -->
+    <div class="ai-chat" id="ai-chat-button">
+        <i class="fas fa-robot"></i>
+    </div>
+    <div class="ai-chat-window" id="ai-chat-window">
+        <div class="ai-chat-header">
+            <h3>DON_FBBR</h3>
+            <button id="ai-chat-close"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="ai-chat-body" id="ai-chat-body">
+            <div style="background-color: #f0f0f0; padding: 10px; border-radius: 10px; margin-bottom: 10px;">
+                <p><strong>DON_FBBR:</strong> Olá! Sou o DON_FBBR, sua assistente de estudos em Odontologia. Como posso ajudar você com as questões de estudo?</p>
+            </div>
+        </div>
+        <div class="ai-chat-input">
+            <input type="text" placeholder="Digite sua pergunta..." id="ai-chat-input-field">
+            <button id="ai-chat-send"><i class="fas fa-paper-plane"></i></button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>FBBR_Odonto</h3>
+                    <p>Estude Odontologia de forma gratuita e completa. Acesse resumos, questões de provas, cursos e materiais de estudo para todas as especialidades odontológicas.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Links Rápidos</h3>
+                    <ul>
+                        <li><a href="index.html">Início</a></li>
+                        <li><a href="especialidades.html">Especialidades</a></li>
+                        <li><a href="resumos.html">Resumos</a></li>
+                        <li><a href="questoes.html">Questões</a></li>
+                        <li><a href="contato.html">Contato</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Especialidades</h3>
+                    <ul>
+                        <li><a href="especialidades.html#endodontia">Endodontia</a></li>
+                        <li><a href="especialidades.html#ortodontia">Ortodontia</a></li>
+                        <li><a href="especialidades.html#periodontia">Periodontia</a></li>
+                        <li><a href="especialidades.html#protese">Prótese Dentária</a></li>
+                        <li><a href="especialidades.html">Ver todas</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 FBBR_Odonto. Criado por Harrison Costa. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Menu Mobile Toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const menu = document.getElementById('menu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            menu.classList.toggle('show');
+        });
+
+        // Questões Interativas
+        const questionOptions = document.querySelectorAll('.question-option');
+        const checkButtons = document.querySelectorAll('.check-answer');
+        const explanationButtons = document.querySelectorAll('.show-explanation');
+        const explanations = document.querySelectorAll('.question-explanation');
+        
+        // Estatísticas
+        let questionsAnswered = 0;
+        let questionsCorrect = 0;
+        const questionsTotal = 10;
+        
+        // Inicializar progresso
+        updateProgress();
+        
+        // Adicionar evento de clique às opções
+        questionOptions.forEach(option => {
+            option.addEventListener('click', function() {
+                // Remover seleção anterior no mesmo grupo de questão
+                const parentQuestion = this.closest('.question-container');
+                const options = parentQuestion.querySelectorAll('.question-option');
+                
+                options.forEach(opt => {
+                    opt.classList.remove('selected');
+                });
+                
+                // Selecionar esta opção
+                this.classList.add('selected');
+            });
+        });
+        
+        // Adicionar evento de clique aos botões de verificação
+        checkButtons.forEach((button, index) => {
+            button.addEventListener('click', function() {
+                const parentQuestion = this.closest('.question-container');
+                const selectedOption = parentQuestion.querySelector('.question-option.selected');
+                
+                if (!selectedOption) {
+                    alert('Por favor, selecione uma opção antes de verificar a resposta.');
+                    return;
+                }
+                
+                // Desabilitar seleção após verificação
+                const options = parentQuestion.querySelectorAll('.question-option');
+                options.forEach(opt => {
+                    opt.style.pointerEvents = 'none';
+                    
+                    if (opt.getAttribute('data-correct') === 'true') {
+                        opt.classList.add('correct');
+                    } else if (opt === selectedOption && opt.getAttribute('data-correct') === 'false') {
+                        opt.classList.add('incorrect');
+                    }
+                });
+                
+                // Atualizar estatísticas
+                questionsAnswered++;
+                if (selectedOption.getAttribute('data-correct') === 'true') {
+                    questionsCorrect++;
+                }
+                
+                updateProgress();
+                
+                // Mostrar botão de explicação
+                this.style.display = 'none';
+                explanationButtons[index].style.display = 'block';
+            });
+        });
+        
+        // Adicionar evento de clique aos botões de explicação
+        explanationButtons.forEach((button, index) => {
+            button.addEventListener('click', function() {
+                explanations[index].classList.toggle('show');
+                
+                if (explanations[index].classList.contains('show')) {
+                    this.textContent = 'Ocultar Explicação';
+                } else {
+                    this.textContent = 'Ver Explicação';
+                }
+            });
+        });
+        
+        // Filtro de Questões
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const questionContainers = document.querySelectorAll('.question-container');
+        
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remover classe active de todos os botões
+                filterBtns.forEach(b => b.classList.remove('active'));
+                
+                // Adicionar classe active ao botão clicado
+                btn.classList.add('active');
+                
+                // Filtrar questões
+                const filter = btn.getAttribute('data-filter');
+                
+                questionContainers.forEach(container => {
+                    if (filter === 'all' || container.getAttribute('data-category') === filter) {
+                        container.style.display = 'block';
+                    } else {
+                        container.style.display = 'none';
+                    }
+                });
+            });
+        });
+        
+        // Atualizar progresso
+        function updateProgress() {
+            document.getElementById('questions-answered').textContent = questionsAnswered;
+            document.getElementById('questions-correct').textContent = questionsCorrect;
+            document.getElementById('questions-total').textContent = questionsTotal;
+            
+            const progressPercentage = (questionsAnswered / questionsTotal) * 100;
+            document.getElementById('progress-fill').style.width = progressPercentage + '%';
+        }
+
+        // AI Chat Toggle
+        const aiChatButton = document.getElementById('ai-chat-button');
+        const aiChatWindow = document.getElementById('ai-chat-window');
+        const aiChatClose = document.getElementById('ai-chat-close');
+        const aiChatSend = document.getElementById('ai-chat-send');
+        const aiChatInputField = document.getElementById('ai-chat-input-field');
+        const aiChatBody = document.getElementById('ai-chat-body');
+        
+        aiChatButton.addEventListener('click', () => {
+            aiChatWindow.style.display = 'flex';
+        });
+        
+        aiChatClose.addEventListener('click', () => {
+            aiChatWindow.style.display = 'none';
+        });
+        
+        aiChatSend.addEventListener('click', sendMessage);
+        aiChatInputField.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+        
+        function sendMessage() {
+            const message = aiChatInputField.value.trim();
+            if (message) {
+                // Adicionar mensagem do usuário
+                const userMessageDiv = document.createElement('div');
+                userMessageDiv.style.textAlign = 'right';
+                userMessageDiv.style.marginBottom = '10px';
+                userMessageDiv.innerHTML = `<p><strong>Você:</strong> ${message}</p>`;
+                aiChatBody.appendChild(userMessageDiv);
+                
+                // Limpar campo de entrada
+                aiChatInputField.value = '';
+                
+                // Simular resposta do DON_FBBR (em uma aplicação real, isso seria processado pelo backend)
+                setTimeout(() => {
+                    const botMessageDiv = document.createElement('div');
+                    botMessageDiv.style.backgroundColor = '#f0f0f0';
+                    botMessageDiv.style.padding = '10px';
+                    botMessageDiv.style.borderRadius = '10px';
+                    botMessageDiv.style.marginBottom = '10px';
+                    
+                    // Resposta simulada baseada em palavras-chave
+                    let response = "Desculpe, não entendi sua pergunta sobre as questões. Pode reformular?";
+                    
+                    if (message.toLowerCase().includes('endodontia')) {
+                        response = "Temos questões sobre Endodontia que abordam temas como anatomia pulpar, diagnóstico, técnicas de instrumentação e obturação. Use o filtro 'Endodontia' para visualizar apenas estas questões.";
+                    } else if (message.toLowerCase().includes('ortodontia')) {
+                        response = "Para Ortodontia, oferecemos questões sobre classificação de Angle, desenvolvimento da dentição e técnicas de tratamento. Filtre por 'Ortodontia' para acessá-las.";
+                    } else if (message.toLowerCase().includes('periodontia')) {
+                        response = "Temos questões sobre a nova classificação das doenças periodontais, diagnóstico e tratamento. Use o filtro 'Periodontia' para encontrá-las.";
+                    } else if (message.toLowerCase().includes('questão') || message.toLowerCase().includes('questoes') || message.toLowerCase().includes('questões')) {
+                        response = "Nosso banco de questões cobre todas as principais especialidades odontológicas. Você pode filtrar por especialidade, verificar suas respostas e ver explicações detalhadas para cada questão. Seu progresso é salvo automaticamente.";
+                    } else if (message.toLowerCase().includes('explicação') || message.toLowerCase().includes('explicacao')) {
+                        response = "Após responder uma questão, clique em 'Verificar Resposta' e depois em 'Ver Explicação' para acessar uma explicação detalhada sobre o tema abordado.";
+                    }
+                    
+                    botMessageDiv.innerHTML = `<p><strong>DON_FBBR:</strong> ${response}</p>`;
+                    aiChatBody.appendChild(botMessageDiv);
+                    
+                    // Rolar para o final da conversa
+                    aiChatBody.scrollTop = aiChatBody.scrollHeight;
+                }, 1000);
+                
+                // Rolar para o final da conversa
+                aiChatBody.scrollTop = aiChatBody.scrollHeight;
+            }
+        }
+    </script>
+</body>
+</html>

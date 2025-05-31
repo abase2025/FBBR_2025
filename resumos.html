@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resumos Odontológicos - FBBR_Odonto</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <meta name="description" content="Acesse resumos completos para todas as especialidades odontológicas reconhecidas pelo CFO.">
+    <meta name="author" content="Harrison Costa">
+    <style>
+        .filter-container {
+            background-color: #f9f7f0;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 2rem;
+            border: 1px solid var(--vintage-border);
+        }
+        
+        .filter-title {
+            font-family: 'Baskerville', serif;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+        
+        .filter-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .filter-btn {
+            background-color: white;
+            border: 1px solid var(--primary-color);
+            color: var(--primary-color);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .filter-btn:hover, .filter-btn.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .resume-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .resume-card {
+            background-color: #fff;
+            border: 1px solid var(--vintage-border);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px var(--shadow-color);
+            transition: all 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .resume-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .resume-header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem;
+            text-align: center;
+            border-bottom: 3px solid var(--secondary-color);
+        }
+        
+        .resume-header h3 {
+            margin: 0;
+            color: white;
+            font-family: 'Baskerville', serif;
+        }
+        
+        .resume-content {
+            padding: 1.5rem;
+            flex: 1;
+        }
+        
+        .resume-content p {
+            font-family: 'Baskerville', serif;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+        
+        .resume-footer {
+            padding: 1rem;
+            background-color: #f9f9f9;
+            border-top: 1px solid #eee;
+            text-align: center;
+        }
+        
+        .resume-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .resume-meta span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .resume-meta i {
+            color: var(--secondary-color);
+        }
+        
+        .resume-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            margin-top: 1rem;
+        }
+        
+        .resume-tag {
+            background-color: #f0f0f0;
+            color: #666;
+            padding: 0.2rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.8rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Cabeçalho -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <img src="assets/images/logo.png" alt="FBBR_Odonto Logo">
+                <span class="logo-text">FBBR_Odonto</span>
+            </div>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav>
+                <ul id="menu">
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="especialidades.html">Especialidades</a></li>
+                    <li><a href="resumos.html" class="active">Resumos</a></li>
+                    <li><a href="questoes.html">Questões</a></li>
+                    <li><a href="contato.html">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Resumos Odontológicos</h1>
+            <p>Acesse resumos completos e bem estruturados para todas as especialidades odontológicas reconhecidas pelo CFO.</p>
+        </div>
+    </section>
+
+    <!-- Conteúdo Principal -->
+    <section class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Biblioteca de Resumos</h2>
+            </div>
+            
+            <!-- Filtros -->
+            <div class="filter-container">
+                <h3 class="filter-title">Filtrar por Especialidade:</h3>
+                <div class="filter-options">
+                    <button class="filter-btn active" data-filter="all">Todos</button>
+                    <button class="filter-btn" data-filter="endodontia">Endodontia</button>
+                    <button class="filter-btn" data-filter="ortodontia">Ortodontia</button>
+                    <button class="filter-btn" data-filter="periodontia">Periodontia</button>
+                    <button class="filter-btn" data-filter="protese">Prótese</button>
+                    <button class="filter-btn" data-filter="anestesiologia">Anestesiologia</button>
+                    <button class="filter-btn" data-filter="cariologia">Cariologia</button>
+                    <button class="filter-btn" data-filter="dentistica">Dentística</button>
+                    <button class="filter-btn" data-filter="farmacologia">Farmacologia</button>
+                    <button class="filter-btn" data-filter="materiais">Materiais</button>
+                    <button class="filter-btn" data-filter="oclusao">Oclusão</button>
+                    <button class="filter-btn" data-filter="odontolegal">Odontologia Legal</button>
+                </div>
+            </div>
+            
+            <!-- Grid de Resumos -->
+            <div class="resume-grid">
+                <!-- Endodontia -->
+                <div class="resume-card" data-category="endodontia">
+                    <div class="resume-header">
+                        <h3>Introdução à Endodontia</h3>
+                    </div>
+                    <div class="resume-content">
+                        <div class="resume-meta">
+                            <span><i class="fas fa-folder"></i> Endodontia</span>
+                            <span><i class="fas fa-clock"></i> 15 min de leitura</span>
+                        </div>
+                        <p>Resumo completo sobre os fundamentos da Endodontia, incluindo anatomia interna dos dentes, diagnóstico pulpar e periapical, e princípios básicos do tratamento endodôntico.</p>
+                        <div class="resume-tags">
+                            <span class="resume-tag">Anatomia</span>
+                            <span class="resume-tag">Diagnóstico</span>
+                            <span class="resume-tag">Tratamento</span>
+                        </div>
+                    </div>
+                    <div class="resume-footer">
+                        <a href="pdf-viewer.html?pdf=assets/pdfs/endodontia/Endodontia-Introduçãoeanatomiainternadosdentes.pdf&title=Introdução à Endodontia" class="nav-btn">Acessar Resumo</a>
+                    </div>
+                </div>
+                
+                <div class="resume-card" data-category="endodontia">
+                    <div class="resume-header">
+                        <h3>Técnicas Endodônticas</h3>
+                    </div>
+                    <div class="resume-content">
+                        <div class="resume-meta">
+                            <span><i class="fas fa-folder"></i> Endodontia</span>
+                            <span><i class="fas fa-clock"></i> 25 min de leitura</span>
+                        </div>
+                        <p>Resumo detalhado sobre as técnicas de instrumentação, irrigação e obturação utilizadas no tratamento endodôntico, incluindo técnicas manuais e mecanizadas.</p>
+                        <div class="resume-tags">
+                            <span class="resume-tag">Instrumentação</span>
+                            <span class="resume-tag">Irrigação</span>
+                            <span class="resume-tag">Obturação</span>
+                        </div>
+                    </div>
+                    <div class="resume-footer">
+                        <a href="pdf-viewer.html?pdf=assets/pdfs/endodontia/endondotia.pdf&title=Técnicas Endodônticas" class="nav-btn">Acessar Resumo</a>
+                    </div>
+                </div>
+                
+                <!-- Ortodontia -->
+                <div class="resume-card" data-category="ortodontia">
+                    <div class="resume-header">
+                        <h3>Classificação das Más Oclusões</h3>
+                    </div>
+                    <div class="resume-content">
+                        <div class="resume-meta">
+                            <span><i class="fas fa-folder"></i> Ortodontia</span>
+                            <span><i class="fas fa-clock"></i> 20 min de leitura</span>
+                        </div>
+                        <p>Resumo completo sobre os sistemas de classificação das más oclusões, incluindo as classificações de Angle, Andrews e Ackerman-Proffit, com ilustrações e exemplos clínicos.</p>
+                        <div class="resume-tags">
+                            <span class="resume-tag">Angle</span>
+                            <span class="resume-tag">Andrews</span>
+                            <span class="resume-tag">Diagnóstico</span>
+                        </div>
+                    </div>
+                    <div class="resume-footer">
+                        <a href="pdf-viewer.html?pdf=assets/pdfs/ortodontia/ORTODONTIA-Classificaçãodasmásoclusões.pdf&title=Classificação das Más Oclusões" class="nav-btn">Acessar Resumo</a>
+                    </div>
+                </div>
+                
+                <div class="resume-card" data-category="ortodontia">
+                    <div class="resume-header">
+                        <h3>Desenvolvimento da Dentição</h3>
+                    </div>
+                    <div class="resume-content">
+                        <div class="resume-meta">
+                            <span><i class="fas fa-folder"></i> Ortodontia</span>
+                            <span><i class="fas fa-clock"></i> 18 min de leitura</span>
+                        </div>
+                        <p>Resumo sobre o desenvolvimento normal da dentição, desde a dentição decídua até a permanente, incluindo cronologia de erupção, sequência e possíveis alterações.</p>
+                        <div class="resume-tags">
+                            <span class="resume-tag">Dentição Decídua</span>
+                            <span class="resume-tag">Dentição Mista</span>
+                            <span class="resume-tag">Erupção</span>
+                        </div>
+                    </div>
+                    <div class="resume-footer">
+                        <a href="pdf-viewer.html?pdf=assets/pdfs/ortodontia/ORTODONTIA-Desenvolvimentodadentição.pdf&title=Desenvolvimento da Dentição" class="nav-btn">Acessar Resumo</a>
+                    </div>
+                </div>
+                
+                <!-- Periodontia -->
+                <div class="resume-card" data-category="periodontia">
+                    <div class="resume-header">
+                        <h3>Nova Classificação das Doenças Periodontais</h3>
+                    </div>
+                    <div class="resume-content">
+                        <div class="resume-meta">
+                            <span><i class="fas fa-folder"></i> Periodontia</span>
+                            <span><i class="fas fa-clock"></i> 30 min de leitura</span>
+                        </div>
+                        <p>Resumo completo sobre a nova classificação das doenças e condições periodontais e peri-implantares de 2018, incluindo critérios diagnósticos e abordagens terapêuticas.</p>
+                        <div class="resume-tags">
+                            <span class="resume-tag">Classificação</span>
+                            <span class="resume-tag">Diagnóstico</span>
+                            <span class="resume-tag">Tratamento</span>
+                        </div>
+                    </div>
+                    <div class="resume-footer">
+                        <a href="pdf-viewer.html?pdf=assets/pdfs/periodontia/Periodontia-CompletoNovaClassificação.pdf&title=Nova Classificação das Doenças Periodontais" class="nav-btn">Acessar Resumo</a>
+                    </div>
+                </div>
+                
+                <!-- Prótese -->
+                <div class="resume-card" data-category="protese">
+                    <div class="resume-header">
+                        <h3>Prótese Parcial Removível</h3>
+                    </div>
+                    <div class="resume-content">
+                        <div class="resume-meta">
+                            <span><i class="fas fa-folder"></i> Prótese</span>
+                            <span><i class="fas fa-clock"></i> 25 min de leitura</span>
+                        </div>
+                        <p>Resumo detalhado sobre próteses parciais removíveis, incluindo classificação de Kennedy, componentes, planejamento, moldagem e instalação.</p>
+                        <div class="resume-tags">
+                            <span class="resume-tag">Kennedy</span>
+                            <span class="resume-tag">Componentes</span>
+                            <span class="resume-tag">Planejamento</span>
+                        </div>
+                    </div>
+                    <div class="resume-footer">
+                        <a href="pdf-viewer.html?pdf=assets/pdfs/protese/PÓTESEPARCIALREMOVIVEL.pdf&title=Prótese Parcial Removível" class="nav-btn">Acessar Resumo</a>
+                    </div>
+                </div>
+                
+                <!-- Anestesiologia -->
+                <div class="resume-card" data-category="anestesiologia">
+                    <div class="resume-header">
+                        <h3>Técnicas de Anestesia Local</h3>
+                    </div>
+                    <div class="resume-content">
+                        <div class="resume-meta">
+                            <span><i class="fas fa-folder"></i> Anestesiologia</span>
+                            <span><i class="fas fa-clock"></i> 22 min de leitura</span>
+                        </div>
+                        <p>Resumo sobre as principais técnicas de anestesia local utilizadas em odontologia, incluindo técnicas infiltrativas e bloqueios regionais para maxila e mandíbula.</p>
+                        <div class="resume-tags">
+                            <span class="resume-tag">Técnicas</span>
+                            <span class="resume-tag">Bloqueios</span>
+                            <span class="resume-tag">Anatomia</span>
+                        </div>
+                    </div>
+                    <div class="resume-footer">
+                        <a href="pdf-viewer.html?pdf=assets/pdfs/anestesiologia/ANESTESIA-TÉCNICASEMANEJOS.pdf&title=Técnicas de Anestesia Local" class="nav-btn">Acessar Resumo</a>
+                    </div>
+                </div>
+                
+                <!-- Cariologia -->
+                <div class="resume-card" data-category="cariologia">
+                    <div class="resume-header">
+                        <h3>Evolução da Cárie Dentária</h3>
+                    </div>
+                    <div class="resume-content">
+                        <div class="resume-meta">
+                            <span><i class="fas fa-folder"></i> Cariologia</span>
+                            <span><i class="fas fa-clock"></i> 15 min de leitura</span>
+                        </div>
+                        <p>Resumo sobre o processo de desenvolvimento e evolução da cárie dentária, incluindo fatores etiológicos, histopatologia e classificação das lesões.</p>
+                        <div class="resume-tags">
+                            <span class="resume-tag">Etiologia</span>
+                            <span class="resume-tag">Histopatologia</span>
+                            <span class="resume-tag">Classificação</span>
+                        </div>
+                    </div>
+                    <div class="resume-footer">
+                        <a href="pdf-viewer.html?pdf=assets/pdfs/cariologia/CARIOLOGIA-Evoluçãodacárie.pdf&title=Evolução da Cárie Dentária" class="nav-btn">Acessar Resumo</a>
+                    </div>
+                </div>
+                
+                <!-- Dentística -->
+                <div class="resume-card" data-category="dentistica">
+                    <div class="resume-header">
+                        <h3>Dentística Restauradora</h3>
+                    </div>
+                    <div class="resume-content">
+                        <div class="resume-meta">
+                            <span><i class="fas fa-folder"></i> Dentística</span>
+                            <span><i class="fas fa-clock"></i> 28 min de leitura</span>
+                        </div>
+                        <p>Resumo completo sobre procedimentos restauradores diretos e indiretos, incluindo preparos cavitários, materiais restauradores e técnicas de acabamento e polimento.</p>
+                        <div class="resume-tags">
+                            <span class="resume-tag">Preparos</span>
+                            <span class="resume-tag">Materiais</span>
+                            <span class="resume-tag">Técnicas</span>
+                        </div>
+                    </div>
+                    <div class="resume-footer">
+                        <a href="pdf-viewer.html?pdf=assets/pdfs/dentistica/Dentisticacompleto.pdf&title=Dentística Restauradora" class="nav-btn">Acessar Resumo</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DON_FBBR IA Chat -->
+    <div class="ai-chat" id="ai-chat-button">
+        <i class="fas fa-robot"></i>
+    </div>
+    <div class="ai-chat-window" id="ai-chat-window">
+        <div class="ai-chat-header">
+            <h3>DON_FBBR</h3>
+            <button id="ai-chat-close"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="ai-chat-body" id="ai-chat-body">
+            <div style="background-color: #f0f0f0; padding: 10px; border-radius: 10px; margin-bottom: 10px;">
+                <p><strong>DON_FBBR:</strong> Olá! Sou o DON_FBBR, sua assistente de estudos em Odontologia. Como posso ajudar você a encontrar resumos para seus estudos?</p>
+            </div>
+        </div>
+        <div class="ai-chat-input">
+            <input type="text" placeholder="Digite sua pergunta..." id="ai-chat-input-field">
+            <button id="ai-chat-send"><i class="fas fa-paper-plane"></i></button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>FBBR_Odonto</h3>
+                    <p>Estude Odontologia de forma gratuita e completa. Acesse resumos, questões de provas, cursos e materiais de estudo para todas as especialidades odontológicas.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Links Rápidos</h3>
+                    <ul>
+                        <li><a href="index.html">Início</a></li>
+                        <li><a href="especialidades.html">Especialidades</a></li>
+                        <li><a href="resumos.html">Resumos</a></li>
+                        <li><a href="questoes.html">Questões</a></li>
+                        <li><a href="contato.html">Contato</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Especialidades</h3>
+                    <ul>
+                        <li><a href="especialidades.html#endodontia">Endodontia</a></li>
+                        <li><a href="especialidades.html#ortodontia">Ortodontia</a></li>
+                        <li><a href="especialidades.html#periodontia">Periodontia</a></li>
+                        <li><a href="especialidades.html#protese">Prótese Dentária</a></li>
+                        <li><a href="especialidades.html">Ver todas</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 FBBR_Odonto. Criado por Harrison Costa. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Menu Mobile Toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const menu = document.getElementById('menu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            menu.classList.toggle('show');
+        });
+
+        // Filtro de Resumos
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const resumeCards = document.querySelectorAll('.resume-card');
+        
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // Remover classe active de todos os botões
+                filterBtns.forEach(b => b.classList.remove('active'));
+                
+                // Adicionar classe active ao botão clicado
+                btn.classList.add('active');
+                
+                // Filtrar cards
+                const filter = btn.getAttribute('data-filter');
+                
+                resumeCards.forEach(card => {
+                    if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                        card.style.display = 'flex';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // AI Chat Toggle
+        const aiChatButton = document.getElementById('ai-chat-button');
+        const aiChatWindow = document.getElementById('ai-chat-window');
+        const aiChatClose = document.getElementById('ai-chat-close');
+        const aiChatSend = document.getElementById('ai-chat-send');
+        const aiChatInputField = document.getElementById('ai-chat-input-field');
+        const aiChatBody = document.getElementById('ai-chat-body');
+        
+        aiChatButton.addEventListener('click', () => {
+            aiChatWindow.style.display = 'flex';
+        });
+        
+        aiChatClose.addEventListener('click', () => {
+            aiChatWindow.style.display = 'none';
+        });
+        
+        aiChatSend.addEventListener('click', sendMessage);
+        aiChatInputField.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+        
+        function sendMessage() {
+            const message = aiChatInputField.value.trim();
+            if (message) {
+                // Adicionar mensagem do usuário
+                const userMessageDiv = document.createElement('div');
+                userMessageDiv.style.textAlign = 'right';
+                userMessageDiv.style.marginBottom = '10px';
+                userMessageDiv.innerHTML = `<p><strong>Você:</strong> ${message}</p>`;
+                aiChatBody.appendChild(userMessageDiv);
+                
+                // Limpar campo de entrada
+                aiChatInputField.value = '';
+                
+                // Simular resposta do DON_FBBR (em uma aplicação real, isso seria processado pelo backend)
+                setTimeout(() => {
+                    const botMessageDiv = document.createElement('div');
+                    botMessageDiv.style.backgroundColor = '#f0f0f0';
+                    botMessageDiv.style.padding = '10px';
+                    botMessageDiv.style.borderRadius = '10px';
+                    botMessageDiv.style.marginBottom = '10px';
+                    
+                    // Resposta simulada baseada em palavras-chave
+                    let response = "Desculpe, não entendi sua pergunta sobre resumos odontológicos. Pode reformular?";
+                    
+                    if (message.toLowerCase().includes('endodontia')) {
+                        response = "Temos resumos completos sobre Endodontia, incluindo introdução, anatomia interna dos dentes e técnicas endodônticas. Você pode filtrar por 'Endodontia' na página de resumos para visualizá-los.";
+                    } else if (message.toLowerCase().includes('ortodontia')) {
+                        response = "Para Ortodontia, oferecemos resumos sobre classificação das más oclusões e desenvolvimento da dentição. Use o filtro 'Ortodontia' para encontrá-los facilmente.";
+                    } else if (message.toLowerCase().includes('periodontia')) {
+                        response = "Temos um resumo completo sobre a nova classificação das doenças periodontais. É um material essencial para compreender os avanços recentes nesta área.";
+                    } else if (message.toLowerCase().includes('prótese') || message.toLowerCase().includes('protese')) {
+                        response = "Para Prótese Dentária, oferecemos um resumo detalhado sobre prótese parcial removível, incluindo classificação de Kennedy e planejamento.";
+                    } else if (message.toLowerCase().includes('resumo') || message.toLowerCase().includes('material')) {
+                        response = "Nossa biblioteca de resumos cobre todas as principais especialidades odontológicas. Você pode filtrar por especialidade para encontrar o conteúdo desejado. Cada resumo pode ser visualizado online ou baixado em formato PDF.";
+                    }
+                    
+                    botMessageDiv.innerHTML = `<p><strong>DON_FBBR:</strong> ${response}</p>`;
+                    aiChatBody.appendChild(botMessageDiv);
+                    
+                    // Rolar para o final da conversa
+                    aiChatBody.scrollTop = aiChatBody.scrollHeight;
+                }, 1000);
+                
+                // Rolar para o final da conversa
+                aiChatBody.scrollTop = aiChatBody.scrollHeight;
+            }
+        }
+    </script>
+</body>
+</html>

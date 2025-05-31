@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Especialidades Odontológicas - FBBR_Odonto</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <meta name="description" content="Explore todas as especialidades reconhecidas pelo Conselho Federal de Odontologia (CFO) com materiais gratuitos para estudo.">
+    <meta name="author" content="Harrison Costa">
+    <style>
+        .specialty-card {
+            background-color: #fff;
+            border: 1px solid var(--vintage-border);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px var(--shadow-color);
+            transition: all 0.3s ease;
+            position: relative;
+            margin-bottom: 2rem;
+        }
+        
+        .specialty-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+        }
+        
+        .specialty-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+        }
+        
+        .specialty-header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+            border-bottom: 3px solid var(--secondary-color);
+        }
+        
+        .specialty-header h2 {
+            margin: 0;
+            color: white;
+            border-bottom: none;
+            font-family: 'Baskerville', serif;
+        }
+        
+        .specialty-content {
+            padding: 2rem;
+        }
+        
+        .specialty-content p {
+            font-family: 'Baskerville', serif;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+        
+        .materials-list {
+            margin-top: 2rem;
+        }
+        
+        .material-item {
+            background-color: #f9f7f0;
+            border: 1px solid #e0d9c5;
+            border-radius: 6px;
+            padding: 1.2rem;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .material-item:hover {
+            background-color: #f5f2e8;
+            transform: translateX(5px);
+        }
+        
+        .material-title {
+            font-weight: 600;
+            color: var(--primary-color);
+            flex: 1;
+        }
+        
+        .material-actions {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .material-btn {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+        
+        .material-btn:hover {
+            background-color: var(--primary-color);
+        }
+        
+        .material-btn.view {
+            background-color: var(--accent-color);
+        }
+        
+        .material-btn.download {
+            background-color: var(--secondary-color);
+        }
+        
+        .specialty-footer {
+            background-color: #f9f9f9;
+            padding: 1.5rem;
+            text-align: center;
+            border-top: 1px solid #eee;
+        }
+        
+        .ornament {
+            text-align: center;
+            margin: 2rem 0;
+            color: var(--secondary-color);
+            font-size: 1.5rem;
+        }
+        
+        .ornament::before,
+        .ornament::after {
+            content: "❦";
+            display: inline-block;
+            margin: 0 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Cabeçalho -->
+    <header>
+        <div class="container header-container">
+            <div class="logo">
+                <img src="assets/images/logo.png" alt="FBBR_Odonto Logo">
+                <span class="logo-text">FBBR_Odonto</span>
+            </div>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <nav>
+                <ul id="menu">
+                    <li><a href="index.html">Início</a></li>
+                    <li><a href="especialidades.html" class="active">Especialidades</a></li>
+                    <li><a href="resumos.html">Resumos</a></li>
+                    <li><a href="questoes.html">Questões</a></li>
+                    <li><a href="contato.html">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Especialidades Odontológicas</h1>
+            <p>Explore todas as especialidades reconhecidas pelo Conselho Federal de Odontologia (CFO) com materiais gratuitos para estudo.</p>
+        </div>
+    </section>
+
+    <!-- Conteúdo Principal -->
+    <section class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Explore por Especialidade</h2>
+            </div>
+            
+            <div class="ornament"></div>
+            
+            <!-- Endodontia -->
+            <div class="specialty-card">
+                <div class="specialty-header">
+                    <h2>Endodontia</h2>
+                </div>
+                <div class="specialty-content">
+                    <p>A Endodontia é a especialidade que estuda a polpa dentária e os tecidos periapicais, bem como as doenças que os afetam. O tratamento endodôntico, popularmente conhecido como "tratamento de canal", visa preservar o dente através da remoção do tecido pulpar inflamado ou necrosado, limpeza, modelagem e obturação do sistema de canais radiculares.</p>
+                    
+                    <p>Esta especialidade requer conhecimento aprofundado da anatomia interna dos dentes, técnicas de instrumentação, irrigação e obturação, além de diagnóstico preciso das patologias pulpares e periapicais.</p>
+                    
+                    <div class="materials-list">
+                        <h3>Materiais Disponíveis</h3>
+                        
+                        <div class="material-item">
+                            <span class="material-title">Introdução e Anatomia Interna dos Dentes</span>
+                            <div class="material-actions">
+                                <a href="pdf-viewer.html?pdf=assets/pdfs/endodontia/Endodontia-Introduçãoeanatomiainternadosdentes.pdf&title=Introdução e Anatomia Interna dos Dentes" class="material-btn view">Visualizar</a>
+                                <a href="assets/pdfs/endodontia/Endodontia-Introduçãoeanatomiainternadosdentes.pdf" download class="material-btn download">Download</a>
+                            </div>
+                        </div>
+                        
+                        <div class="material-item">
+                            <span class="material-title">Endodontia Completo</span>
+                            <div class="material-actions">
+                                <a href="pdf-viewer.html?pdf=assets/pdfs/endodontia/endondotia.pdf&title=Endodontia Completo" class="material-btn view">Visualizar</a>
+                                <a href="assets/pdfs/endodontia/endondotia.pdf" download class="material-btn download">Download</a>
+                            </div>
+                        </div>
+                        
+                        <div class="material-item">
+                            <span class="material-title">Técnicas Endodônticas - Parte 1</span>
+                            <div class="material-actions">
+                                <a href="pdf-viewer.html?pdf=assets/pdfs/endodontia/endondotia1.pdf&title=Técnicas Endodônticas - Parte 1" class="material-btn view">Visualizar</a>
+                                <a href="assets/pdfs/endodontia/endondotia1.pdf" download class="material-btn download">Download</a>
+                            </div>
+                        </div>
+                        
+                        <div class="material-item">
+                            <span class="material-title">Técnicas Endodônticas - Parte 2</span>
+                            <div class="material-actions">
+                                <a href="pdf-viewer.html?pdf=assets/pdfs/endodontia/endondotia2.pdf&title=Técnicas Endodônticas - Parte 2" class="material-btn view">Visualizar</a>
+                                <a href="assets/pdfs/endodontia/endondotia2.pdf" download class="material-btn download">Download</a>
+                            </div>
+                        </div>
+                        
+                        <div class="material-item">
+                            <span class="material-title">Técnicas Endodônticas - Parte 3</span>
+                            <div class="material-actions">
+                                <a href="pdf-viewer.html?pdf=assets/pdfs/endodontia/endondotia3.pdf&title=Técnicas Endodônticas - Parte 3" class="material-btn view">Visualizar</a>
+                                <a href="assets/pdfs/endodontia/endondotia3.pdf" download class="material-btn download">Download</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="specialty-footer">
+                    <a href="#" class="nav-btn">Ver Todos os Materiais de Endodontia</a>
+                </div>
+            </div>
+            
+            <div class="ornament"></div>
+            
+            <!-- Ortodontia -->
+            <div class="specialty-card">
+                <div class="specialty-header">
+                    <h2>Ortodontia</h2>
+                </div>
+                <div class="specialty-content">
+                    <p>A Ortodontia é a especialidade que tem como objetivo a prevenção, supervisão e orientação do desenvolvimento do aparelho mastigatório e a correção das estruturas dento-faciais, incluindo as condições que requeiram movimentação dentária, bem como harmonização da face no complexo maxilo-mandibular.</p>
+                    
+                    <p>O estudo das más oclusões, desenvolvimento da dentição e técnicas de tratamento são fundamentais para o ortodontista, que trabalha para corrigir problemas funcionais e estéticos relacionados ao posicionamento dos dentes e maxilares.</p>
+                    
+                    <div class="materials-list">
+                        <h3>Materiais Disponíveis</h3>
+                        
+                        <div class="material-item">
+                            <span class="material-title">Ortodontia Completo</span>
+                            <div class="material-actions">
+                                <a href="pdf-viewer.html?pdf=assets/pdfs/ortodontia/ORTODONTIA.pdf&title=Ortodontia Completo" class="material-btn view">Visualizar</a>
+                                <a href="assets/pdfs/ortodontia/ORTODONTIA.pdf" download class="material-btn download">Download</a>
+                            </div>
+                        </div>
+                        
+                        <div class="material-item">
+                            <span class="material-title">Classificação das Más Oclusões</span>
+                            <div class="material-actions">
+                                <a href="pdf-viewer.html?pdf=assets/pdfs/ortodontia/ORTODONTIA-Classificaçãodasmásoclusões.pdf&title=Classificação das Más Oclusões" class="material-btn view">Visualizar</a>
+                                <a href="assets/pdfs/ortodontia/ORTODONTIA-Classificaçãodasmásoclusões.pdf" download class="material-btn download">Download</a>
+                            </div>
+                        </div>
+                        
+                        <div class="material-item">
+                            <span class="material-title">Desenvolvimento da Dentição</span>
+                            <div class="material-actions">
+                                <a href="pdf-viewer.html?pdf=assets/pdfs/ortodontia/ORTODONTIA-Desenvolvimentodadentição.pdf&title=Desenvolvimento da Dentição" class="material-btn view">Visualizar</a>
+                                <a href="assets/pdfs/ortodontia/ORTODONTIA-Desenvolvimentodadentição.pdf" download class="material-btn download">Download</a>
+                            </div>
+                        </div>
+                        
+                        <div class="material-item">
+                            <span class="material-title">Etiologia das Más Oclusões</span>
+                            <div class="material-actions">
+                                <a href="pdf-viewer.html?pdf=assets/pdfs/ortodontia/ORTODONTIA-Etiologiadasmásoclusões.pdf&title=Etiologia das Más Oclusões" class="material-btn view">Visualizar</a>
+                                <a href="assets/pdfs/ortodontia/ORTODONTIA-Etiologiadasmásoclusões.pdf" download class="material-btn download">Download</a>
+                            </div>
+                        </div>
+                        
+                        <div class="material-item">
+                            <span class="material-title">Mordida Aberta e Mantenedor de Espaço</span>
+                            <div class="material-actions">
+                                <a href="pdf-viewer.html?pdf=assets/pdfs/ortodontia/ORTODONTIA-MordidaabertaeMantenedordeespaço.pdf&title=Mordida Aberta e Mantenedor de Espaço" class="material-btn view">Visualizar</a>
+                                <a href="assets/pdfs/ortodontia/ORTODONTIA-MordidaabertaeMantenedordeespaço.pdf" download class="material-btn download">Download</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="specialty-footer">
+                    <a href="#" class="nav-btn">Ver Todos os Materiais de Ortodontia</a>
+                </div>
+            </div>
+            
+            <div class="ornament"></div>
+            
+            <!-- Periodontia -->
+            <div class="specialty-card">
+                <div class="specialty-header">
+                    <h2>Periodontia</h2>
+                </div>
+                <div class="specialty-content">
+                    <p>A Periodontia é a especialidade que estuda e trata as doenças do sistema de implantação e suporte dos dentes. Seu principal foco são os tecidos que circundam os dentes: gengiva, ligamento periodontal, cemento radicular e osso alveolar.</p>
+                    
+                    <p>O periodontista trabalha na prevenção, diagnóstico e tratamento das doenças que afetam esses tecidos, como gengivite e periodontite, além de procedimentos de regeneração tecidual e cirurgias plásticas periodontais.</p>
+                    
+                    <div class="materials-list">
+                        <h3>Materiais Disponíveis</h3>
+                        
+                        <div class="material-item">
+                            <span class="material-title">Periodontia - Nova Classificação Completa</span>
+                            <div class="material-actions">
+                                <a href="pdf-viewer.html?pdf=assets/pdfs/periodontia/Periodontia-CompletoNovaClassificação.pdf&title=Periodontia - Nova Classificação Completa" class="material-btn view">Visualizar</a>
+                                <a href="assets/pdfs/periodontia/Periodontia-CompletoNovaClassificação.pdf" download class="material-btn download">Download</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="specialty-footer">
+                    <a href="#" class="nav-btn">Ver Todos os Materiais de Periodontia</a>
+                </div>
+            </div>
+            
+            <div class="ornament"></div>
+            
+            <!-- Prótese Dentária -->
+            <div class="specialty-card">
+                <div class="specialty-header">
+                    <h2>Prótese Dentária</h2>
+                </div>
+                <div class="specialty-content">
+                    <p>A Prótese Dentária é a especialidade que tem como objetivo a reconstrução dos dentes parcialmente destruídos ou a reposição de dentes ausentes visando à manutenção das funções do sistema estomatognático, proporcionando ao paciente a função, a saúde, o conforto e a estética.</p>
+                    
+                    <p>Esta especialidade abrange diferentes modalidades, como próteses fixas, removíveis, totais e sobre implantes, cada uma com suas indicações específicas e técnicas de confecção.</p>
+                    
+                    <div class="materials-list">
+                        <h3>Materiais Disponíveis</h3>
+                        
+                        <div class="material-item">
+                            <span class="material-title">Prótese Parcial Removível</span>
+                            <div class="material-actions">
+                                <a href="pdf-viewer.html?pdf=assets/pdfs/protese/PÓTESEPARCIALREMOVIVEL.pdf&title=Prótese Parcial Removível" class="material-btn view">Visualizar</a>
+                                <a href="assets/pdfs/protese/PÓTESEPARCIALREMOVIVEL.pdf" download class="material-btn download">Download</a>
+                            </div>
+                        </div>
+                        
+                        <div class="material-item">
+                            <span class="material-title">Prótese - Conceitos Fundamentais</span>
+                            <div class="material-actions">
+                                <a href="pdf-viewer.html?pdf=assets/pdfs/protese/protese1.pdf&title=Prótese - Conceitos Fundamentais" class="material-btn view">Visualizar</a>
+                                <a href="assets/pdfs/protese/protese1.pdf" download class="material-btn download">Download</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="specialty-footer">
+                    <a href="#" class="nav-btn">Ver Todos os Materiais de Prótese Dentária</a>
+                </div>
+            </div>
+            
+            <div class="ornament"></div>
+            
+            <!-- Mais Especialidades -->
+            <div class="section-title" style="margin-top: 3rem;">
+                <h2>Mais Especialidades</h2>
+            </div>
+            
+            <div class="specialty-grid">
+                <div class="specialty-card">
+                    <div class="specialty-card-content">
+                        <h3>Anestesiologia</h3>
+                        <p>Estudo das técnicas de anestesia local, manejo da dor e considerações anatômicas para procedimentos odontológicos.</p>
+                        <a href="#" class="nav-btn">Ver Materiais</a>
+                    </div>
+                </div>
+                
+                <div class="specialty-card">
+                    <div class="specialty-card-content">
+                        <h3>Cariologia</h3>
+                        <p>Estudo da cárie dentária, sua etiologia, prevenção, diagnóstico e tratamento.</p>
+                        <a href="#" class="nav-btn">Ver Materiais</a>
+                    </div>
+                </div>
+                
+                <div class="specialty-card">
+                    <div class="specialty-card-content">
+                        <h3>Dentística</h3>
+                        <p>Especialidade que visa o estudo e aplicação de procedimentos educativos, preventivos e restauradores da estrutura dental.</p>
+                        <a href="#" class="nav-btn">Ver Materiais</a>
+                    </div>
+                </div>
+                
+                <div class="specialty-card">
+                    <div class="specialty-card-content">
+                        <h3>Farmacologia</h3>
+                        <p>Estudo dos medicamentos utilizados na odontologia, suas indicações, contraindicações e efeitos adversos.</p>
+                        <a href="#" class="nav-btn">Ver Materiais</a>
+                    </div>
+                </div>
+                
+                <div class="specialty-card">
+                    <div class="specialty-card-content">
+                        <h3>Materiais Odontológicos</h3>
+                        <p>Estudo das propriedades físicas, químicas e biológicas dos materiais utilizados em odontologia.</p>
+                        <a href="#" class="nav-btn">Ver Materiais</a>
+                    </div>
+                </div>
+                
+                <div class="specialty-card">
+                    <div class="specialty-card-content">
+                        <h3>Oclusão</h3>
+                        <p>Estudo das relações de contato entre os dentes superiores e inferiores durante a função mastigatória.</p>
+                        <a href="#" class="nav-btn">Ver Materiais</a>
+                    </div>
+                </div>
+                
+                <div class="specialty-card">
+                    <div class="specialty-card-content">
+                        <h3>Odontologia Legal</h3>
+                        <p>Aplicação dos conhecimentos odontológicos a serviço da justiça e na elaboração de laudos periciais.</p>
+                        <a href="#" class="nav-btn">Ver Materiais</a>
+                    </div>
+                </div>
+                
+                <div class="specialty-card">
+                    <div class="specialty-card-content">
+                        <h3>Outros Materiais</h3>
+                        <p>Instrumentais, isolamentos, técnicas e procedimentos complementares para a prática odontológica.</p>
+                        <a href="#" class="nav-btn">Ver Materiais</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DON_FBBR IA Chat -->
+    <div class="ai-chat" id="ai-chat-button">
+        <i class="fas fa-robot"></i>
+    </div>
+    <div class="ai-chat-window" id="ai-chat-window">
+        <div class="ai-chat-header">
+            <h3>DON_FBBR</h3>
+            <button id="ai-chat-close"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="ai-chat-body" id="ai-chat-body">
+            <div style="background-color: #f0f0f0; padding: 10px; border-radius: 10px; margin-bottom: 10px;">
+                <p><strong>DON_FBBR:</strong> Olá! Sou o DON_FBBR, sua assistente de estudos em Odontologia. Como posso ajudar você a encontrar materiais sobre especialidades odontológicas?</p>
+            </div>
+        </div>
+        <div class="ai-chat-input">
+            <input type="text" placeholder="Digite sua pergunta..." id="ai-chat-input-field">
+            <button id="ai-chat-send"><i class="fas fa-paper-plane"></i></button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>FBBR_Odonto</h3>
+                    <p>Estude Odontologia de forma gratuita e completa. Acesse resumos, questões de provas, cursos e materiais de estudo para todas as especialidades odontológicas.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Links Rápidos</h3>
+                    <ul>
+                        <li><a href="index.html">Início</a></li>
+                        <li><a href="especialidades.html">Especialidades</a></li>
+                        <li><a href="resumos.html">Resumos</a></li>
+                        <li><a href="questoes.html">Questões</a></li>
+                        <li><a href="contato.html">Contato</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Especialidades</h3>
+                    <ul>
+                        <li><a href="#">Endodontia</a></li>
+                        <li><a href="#">Ortodontia</a></li>
+                        <li><a href="#">Periodontia</a></li>
+                        <li><a href="#">Prótese Dentária</a></li>
+                        <li><a href="especialidades.html">Ver todas</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 FBBR_Odonto. Criado por Harrison Costa. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Menu Mobile Toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const menu = document.getElementById('menu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            menu.classList.toggle('show');
+        });
+
+        // AI Chat Toggle
+        const aiChatButton = document.getElementById('ai-chat-button');
+        const aiChatWindow = document.getElementById('ai-chat-window');
+        const aiChatClose = document.getElementById('ai-chat-close');
+        const aiChatSend = document.getElementById('ai-chat-send');
+        const aiChatInputField = document.getElementById('ai-chat-input-field');
+        const aiChatBody = document.getElementById('ai-chat-body');
+        
+        aiChatButton.addEventListener('click', () => {
+            aiChatWindow.style.display = 'flex';
+        });
+        
+        aiChatClose.addEventListener('click', () => {
+            aiChatWindow.style.display = 'none';
+        });
+        
+        aiChatSend.addEventListener('click', sendMessage);
+        aiChatInputField.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+        
+        function sendMessage() {
+            const message = aiChatInputField.value.trim();
+            if (message) {
+                // Adicionar mensagem do usuário
+                const userMessageDiv = document.createElement('div');
+                userMessageDiv.style.textAlign = 'right';
+                userMessageDiv.style.marginBottom = '10px';
+                userMessageDiv.innerHTML = `<p><strong>Você:</strong> ${message}</p>`;
+                aiChatBody.appendChild(userMessageDiv);
+                
+                // Limpar campo de entrada
+                aiChatInputField.value = '';
+                
+                // Simular resposta do DON_FBBR (em uma aplicação real, isso seria processado pelo backend)
+                setTimeout(() => {
+                    const botMessageDiv = document.createElement('div');
+                    botMessageDiv.style.backgroundColor = '#f0f0f0';
+                    botMessageDiv.style.padding = '10px';
+                    botMessageDiv.style.borderRadius = '10px';
+                    botMessageDiv.style.marginBottom = '10px';
+                    
+                    // Resposta simulada baseada em palavras-chave
+                    let response = "Desculpe, não entendi sua pergunta sobre especialidades odontológicas. Pode reformular?";
+                    
+                    if (message.toLowerCase().includes('endodontia')) {
+                        response = "A Endodontia é a especialidade que estuda a polpa dentária e os tecidos periapicais. Temos 5 materiais disponíveis sobre este tema, incluindo anatomia interna dos dentes e técnicas de tratamento. Você pode acessá-los na seção de Endodontia.";
+                    } else if (message.toLowerCase().includes('ortodontia')) {
+                        response = "A Ortodontia trata da correção das estruturas dento-faciais. Temos 5 materiais sobre classificação das más oclusões, desenvolvimento da dentição e outros tópicos importantes. Acesse-os na seção de Ortodontia.";
+                    } else if (message.toLowerCase().includes('periodontia')) {
+                        response = "A Periodontia estuda os tecidos de suporte dos dentes. Temos um material completo sobre a nova classificação das doenças periodontais. Você pode acessá-lo na seção de Periodontia.";
+                    } else if (message.toLowerCase().includes('prótese')) {
+                        response = "A Prótese Dentária visa a reconstrução de dentes danificados ou ausentes. Temos materiais sobre prótese parcial removível e conceitos fundamentais. Acesse-os na seção de Prótese Dentária.";
+                    } else if (message.toLowerCase().includes('especialidade')) {
+                        response = "O FBBR_Odonto oferece materiais para diversas especialidades odontológicas, como Endodontia, Ortodontia, Periodontia, Prótese Dentária, Anestesiologia, Cariologia, Dentística, Farmacologia, Materiais Odontológicos, Oclusão e Odontologia Legal. Qual delas você gostaria de explorar?";
+                    }
+                    
+                    botMessageDiv.innerHTML = `<p><strong>DON_FBBR:</strong> ${response}</p>`;
+                    aiChatBody.appendChild(botMessageDiv);
+                    
+                    // Rolar para o final da conversa
+                    aiChatBody.scrollTop = aiChatBody.scrollHeight;
+                }, 1000);
+                
+                // Rolar para o final da conversa
+                aiChatBody.scrollTop = aiChatBody.scrollHeight;
+            }
+        }
+    </script>
+</body>
+</html>
