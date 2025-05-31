@@ -399,6 +399,34 @@
             display: inline-block;
             margin: 0 10px;
         }
+        
+        /* Destaque para o DON_FBBR */
+        .ai-title {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .ai-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color), var(--primary-color));
+        }
+        
+        .ai-subtitle {
+            font-size: 1.2rem;
+            color: var(--secondary-color);
+            text-align: center;
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
     </style>
 </head>
 <body>
@@ -508,99 +536,93 @@
                 
                 <div class="specialty-card">
                     <div class="specialty-header">
-                        <h3>Mais Especialidades</h3>
+                        <h3>Farmacologia</h3>
                     </div>
                     <div class="specialty-content">
-                        <p>Explore outras áreas como Cariologia, Dentística, Farmacologia, Materiais Odontológicos, Oclusão, Odontologia Legal e muito mais.</p>
+                        <p>Estudo dos medicamentos utilizados na prática odontológica, incluindo analgésicos, anti-inflamatórios, antibióticos e suas interações.</p>
                     </div>
                     <div class="specialty-footer">
-                        <a href="especialidades.html" class="nav-btn">Ver Todas</a>
+                        <a href="especialidades.html#farmacologia" class="nav-btn">Explorar Materiais</a>
                     </div>
                 </div>
+            </div>
+            
+            <div class="text-center" style="margin-top: 2rem;">
+                <a href="especialidades.html" class="btn primary">Ver Todas as Especialidades</a>
             </div>
         </div>
     </section>
 
-    <!-- DON_FBBR IA Section -->
+    <!-- AI Section -->
     <section class="ai-section">
         <div class="container">
-            <div class="section-title">
-                <h2>Conheça o DON_FBBR</h2>
+            <div class="section-title" style="text-align: center;">
+                <h2 class="ai-title">DON_FBBR-A sua Inteligência Artificial</h2>
+                <p class="ai-subtitle">Seu assistente virtual de estudos em Odontologia com busca online</p>
             </div>
             
             <div class="ai-container">
                 <div class="ai-content">
-                    <h3>Seu Assistente Virtual de Estudos em Odontologia</h3>
-                    <p>O DON_FBBR é uma inteligência artificial especializada em odontologia, desenvolvida para auxiliar seus estudos e responder suas dúvidas sobre qualquer especialidade odontológica.</p>
-                    
-                    <p>Faça perguntas sobre conceitos, procedimentos, materiais ou solicite recomendações de estudo. O DON_FBBR está sempre disponível para ajudar você em sua jornada acadêmica.</p>
+                    <h3>Tire suas dúvidas em tempo real</h3>
+                    <p>O DON_FBBR-A sua Inteligência Artificial é um assistente virtual especializado em odontologia, desenvolvido para auxiliar seus estudos e responder suas dúvidas em tempo real, buscando informações atualizadas online.</p>
+                    <p>Pergunte sobre qualquer especialidade odontológica, conceitos, técnicas ou procedimentos, e receba respostas precisas e atualizadas.</p>
                     
                     <div class="ai-features">
                         <div class="ai-feature">
                             <div class="ai-feature-icon">
                                 <i class="fas fa-search"></i>
                             </div>
-                            <h3>Busca Inteligente</h3>
-                            <p>Encontre rapidamente materiais específicos em nossa biblioteca de conteúdos odontológicos.</p>
+                            <h3>Busca Online</h3>
+                            <p>Acessa informações atualizadas da internet para responder suas perguntas com precisão.</p>
                         </div>
                         
                         <div class="ai-feature">
                             <div class="ai-feature-icon">
-                                <i class="fas fa-book"></i>
+                                <i class="fas fa-book-medical"></i>
                             </div>
-                            <h3>Explicações Detalhadas</h3>
-                            <p>Receba explicações claras e precisas sobre conceitos complexos da odontologia.</p>
+                            <h3>Conhecimento Especializado</h3>
+                            <p>Domínio de todas as especialidades odontológicas reconhecidas pelo CFO.</p>
                         </div>
                         
                         <div class="ai-feature">
                             <div class="ai-feature-icon">
-                                <i class="fas fa-graduation-cap"></i>
+                                <i class="fas fa-file-pdf"></i>
                             </div>
-                            <h3>Guia de Estudos</h3>
-                            <p>Obtenha recomendações personalizadas de materiais de estudo para cada especialidade.</p>
-                        </div>
-                        
-                        <div class="ai-feature">
-                            <div class="ai-feature-icon">
-                                <i class="fas fa-question-circle"></i>
-                            </div>
-                            <h3>Suporte 24/7</h3>
-                            <p>Tire suas dúvidas a qualquer momento, sem limitações de horário ou disponibilidade.</p>
+                            <h3>Recomendação de Materiais</h3>
+                            <p>Sugere os melhores materiais de estudo disponíveis na plataforma.</p>
                         </div>
                     </div>
                 </div>
                 
                 <div class="ai-demo">
                     <div class="ai-demo-header">
-                        <img src="assets/images/logo.png" alt="DON_FBBR">
-                        <h3>DON_FBBR</h3>
+                        <img src="assets/images/logo.png" alt="DON_FBBR Logo">
+                        <h3>DON_FBBR-A sua Inteligência Artificial</h3>
                     </div>
                     
-                    <div class="ai-demo-body" id="ai-demo-body">
+                    <div class="ai-demo-body" id="demo-chat-body">
                         <div class="ai-message">
-                            <p><strong>DON_FBBR:</strong> Olá! Sou o DON_FBBR, seu assistente virtual de estudos em Odontologia. Como posso ajudar você hoje?</p>
+                            <p><strong>DON_FBBR:</strong> Olá! Sou o DON_FBBR-A sua Inteligência Artificial, especializada em odontologia. Como posso ajudar você hoje?</p>
                         </div>
                     </div>
                     
                     <div class="ai-demo-input">
-                        <input type="text" id="ai-demo-input-field" placeholder="Digite sua pergunta sobre odontologia...">
-                        <button id="ai-demo-send">Enviar</button>
+                        <input type="text" placeholder="Faça uma pergunta..." id="demo-chat-input">
+                        <button id="demo-chat-send"><i class="fas fa-paper-plane"></i></button>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <div class="ornament"></div>
-
-    <!-- Materiais em Destaque -->
-    <section class="section featured-materials">
+    <!-- Featured Materials -->
+    <section class="section">
         <div class="container">
             <div class="section-title">
                 <h2>Materiais em Destaque</h2>
             </div>
             
-            <p class="section-description">Confira alguns dos materiais mais acessados e bem avaliados da nossa plataforma.</p>
+            <p class="section-description">Confira alguns dos materiais mais acessados pelos estudantes.</p>
             
             <div class="materials-grid">
                 <div class="material-card">
@@ -608,24 +630,24 @@
                         <h3>Endodontia - Anatomia Interna dos Dentes</h3>
                     </div>
                     <div class="material-content">
-                        <p>Material completo sobre a anatomia interna dos dentes, fundamental para o sucesso do tratamento endodôntico. Inclui ilustrações detalhadas e descrições precisas de cada grupo dentário.</p>
+                        <p>Material completo sobre a anatomia interna dos dentes, fundamental para o sucesso do tratamento endodôntico. Inclui ilustrações detalhadas e descrições anatômicas.</p>
                     </div>
                     <div class="material-footer">
-                        <a href="pdf-viewer.html?pdf=assets/pdfs/endodontia/Endodontia-Introduçãoeanatomiainternadosdentes.pdf&title=Introdução e Anatomia Interna dos Dentes" class="material-btn view">Visualizar</a>
-                        <a href="assets/pdfs/endodontia/Endodontia-Introduçãoeanatomiainternadosdentes.pdf" download class="material-btn download">Download</a>
+                        <a href="pdf-viewer.html?pdf=assets/pdfs/endodontia/Endodontia-Introduçãoeanatomiainternadosdentes.pdf&title=Endodontia - Anatomia Interna dos Dentes" class="material-btn view">Visualizar</a>
+                        <a href="assets/pdfs/endodontia/Endodontia-Introduçãoeanatomiainternadosdentes.pdf" download class="material-btn download">Baixar</a>
                     </div>
                 </div>
                 
                 <div class="material-card">
                     <div class="material-header">
-                        <h3>Anestesia - Técnicas e Manejos</h3>
+                        <h3>Anestesiologia - Técnicas e Manejos</h3>
                     </div>
                     <div class="material-content">
-                        <p>Guia completo sobre técnicas anestésicas em odontologia, incluindo bloqueios regionais, infiltrações locais e manejos de complicações. Material essencial para a prática clínica segura.</p>
+                        <p>Guia completo sobre técnicas anestésicas em odontologia, incluindo bloqueios nervosos, infiltrações e manejos de complicações. Material essencial para a prática clínica.</p>
                     </div>
                     <div class="material-footer">
-                        <a href="pdf-viewer.html?pdf=assets/pdfs/anestesiologia/ANESTESIA-TÉCNICASEMANEJOS.pdf&title=Anestesia - Técnicas e Manejos" class="material-btn view">Visualizar</a>
-                        <a href="assets/pdfs/anestesiologia/ANESTESIA-TÉCNICASEMANEJOS.pdf" download class="material-btn download">Download</a>
+                        <a href="pdf-viewer.html?pdf=assets/pdfs/anestesiologia/ANESTESIA-TÉCNICASEMANEJOS.pdf&title=Anestesiologia - Técnicas e Manejos" class="material-btn view">Visualizar</a>
+                        <a href="assets/pdfs/anestesiologia/ANESTESIA-TÉCNICASEMANEJOS.pdf" download class="material-btn download">Baixar</a>
                     </div>
                 </div>
                 
@@ -634,18 +656,22 @@
                         <h3>Ortodontia - Classificação das Más Oclusões</h3>
                     </div>
                     <div class="material-content">
-                        <p>Material detalhado sobre os sistemas de classificação das más oclusões, incluindo Angle, Andrews e classificações contemporâneas. Fundamental para diagnóstico e planejamento ortodôntico.</p>
+                        <p>Material detalhado sobre os sistemas de classificação das más oclusões, incluindo Angle, Andrews e Capelozza. Fundamental para diagnóstico e planejamento ortodôntico.</p>
                     </div>
                     <div class="material-footer">
-                        <a href="pdf-viewer.html?pdf=assets/pdfs/ortodontia/ORTODONTIA-Classificaçãodasmásoclusões.pdf&title=Classificação das Más Oclusões" class="material-btn view">Visualizar</a>
-                        <a href="assets/pdfs/ortodontia/ORTODONTIA-Classificaçãodasmásoclusões.pdf" download class="material-btn download">Download</a>
+                        <a href="pdf-viewer.html?pdf=assets/pdfs/ortodontia/ORTODONTIA-Classificaçãodasmásoclusões.pdf&title=Ortodontia - Classificação das Más Oclusões" class="material-btn view">Visualizar</a>
+                        <a href="assets/pdfs/ortodontia/ORTODONTIA-Classificaçãodasmásoclusões.pdf" download class="material-btn download">Baixar</a>
                     </div>
                 </div>
+            </div>
+            
+            <div class="text-center" style="margin-top: 2rem;">
+                <a href="resumos.html" class="btn primary">Ver Todos os Materiais</a>
             </div>
         </div>
     </section>
 
-    <!-- Estatísticas -->
+    <!-- Stats Section -->
     <section class="stats-section">
         <div class="container">
             <h2>FBBR_Odonto em Números</h2>
@@ -658,35 +684,36 @@
                 
                 <div class="stat-item">
                     <div class="stat-number">12</div>
-                    <div class="stat-label">Especialidades Cobertas</div>
+                    <div class="stat-label">Especialidades</div>
                 </div>
                 
                 <div class="stat-item">
-                    <div class="stat-number">100%</div>
-                    <div class="stat-label">Gratuito</div>
+                    <div class="stat-number">100+</div>
+                    <div class="stat-label">Questões de Prova</div>
                 </div>
                 
                 <div class="stat-item">
                     <div class="stat-number">24/7</div>
-                    <div class="stat-label">Suporte com IA</div>
+                    <div class="stat-label">Assistência Virtual</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Call to Action -->
+    <!-- CTA Section -->
     <section class="cta-section">
         <div class="container">
             <div class="cta-content">
-                <h2>Comece Seus Estudos Agora</h2>
-                <p>Acesse nossa biblioteca completa de materiais odontológicos e aprimore seus conhecimentos com o suporte do DON_FBBR, nossa inteligência artificial especializada em odontologia.</p>
+                <h2>Comece Seus Estudos Hoje</h2>
+                <p>Acesse gratuitamente todos os materiais e recursos disponíveis no FBBR_Odonto. Estude no seu próprio ritmo, tire suas dúvidas com o DON_FBBR-A sua Inteligência Artificial e prepare-se para o sucesso em sua carreira odontológica.</p>
                 
                 <div class="cta-buttons">
                     <a href="especialidades.html" class="btn primary">Explorar Especialidades</a>
-                    <a href="resumos.html" class="btn secondary">Ver Resumos</a>
-                    <a href="questoes.html" class="btn accent">Praticar com Questões</a>
+                    <a href="questoes.html" class="btn secondary">Praticar com Questões</a>
                 </div>
             </div>
+            
+            <div class="ornament">❦</div>
         </div>
     </section>
 
@@ -696,12 +723,12 @@
     </div>
     <div class="ai-chat-window" id="ai-chat-window">
         <div class="ai-chat-header">
-            <h3>DON_FBBR</h3>
+            <h3>DON_FBBR-A sua Inteligência Artificial</h3>
             <button id="ai-chat-close"><i class="fas fa-times"></i></button>
         </div>
         <div class="ai-chat-body" id="ai-chat-body">
-            <div style="background-color: #f0f0f0; padding: 10px; border-radius: 10px; margin-bottom: 10px;">
-                <p><strong>DON_FBBR:</strong> Olá! Sou o DON_FBBR, sua assistente de estudos em Odontologia. Como posso ajudar você hoje?</p>
+            <div class="ai-message">
+                <p><strong>DON_FBBR:</strong> Olá! Sou o DON_FBBR-A sua Inteligência Artificial, especializada em odontologia. Como posso ajudar você hoje?</p>
             </div>
         </div>
         <div class="ai-chat-input">
@@ -746,166 +773,99 @@
     </footer>
 
     <!-- Scripts -->
+    <script src="assets/js/ai-chat.js"></script>
     <script>
         // Menu Mobile Toggle
-        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
-        const menu = document.getElementById('menu');
-        
-        mobileMenuBtn.addEventListener('click', () => {
-            menu.classList.toggle('show');
-        });
-
-        // AI Chat Toggle
-        const aiChatButton = document.getElementById('ai-chat-button');
-        const aiChatWindow = document.getElementById('ai-chat-window');
-        const aiChatClose = document.getElementById('ai-chat-close');
-        const aiChatSend = document.getElementById('ai-chat-send');
-        const aiChatInputField = document.getElementById('ai-chat-input-field');
-        const aiChatBody = document.getElementById('ai-chat-body');
-        
-        aiChatButton.addEventListener('click', () => {
-            aiChatWindow.style.display = 'flex';
-        });
-        
-        aiChatClose.addEventListener('click', () => {
-            aiChatWindow.style.display = 'none';
-        });
-        
-        aiChatSend.addEventListener('click', sendMessage);
-        aiChatInputField.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') {
-                sendMessage();
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const menu = document.getElementById('menu');
+            
+            if (mobileMenuBtn && menu) {
+                mobileMenuBtn.addEventListener('click', () => {
+                    menu.classList.toggle('show');
+                });
             }
-        });
-        
-        function sendMessage() {
-            const message = aiChatInputField.value.trim();
-            if (message) {
-                // Adicionar mensagem do usuário
-                const userMessageDiv = document.createElement('div');
-                userMessageDiv.style.textAlign = 'right';
-                userMessageDiv.style.marginBottom = '10px';
-                userMessageDiv.innerHTML = `<p><strong>Você:</strong> ${message}</p>`;
-                aiChatBody.appendChild(userMessageDiv);
-                
-                // Limpar campo de entrada
-                aiChatInputField.value = '';
-                
-                // Simular resposta do DON_FBBR (em uma aplicação real, isso seria processado pelo backend)
-                setTimeout(() => {
-                    const botMessageDiv = document.createElement('div');
-                    botMessageDiv.style.backgroundColor = '#f0f0f0';
-                    botMessageDiv.style.padding = '10px';
-                    botMessageDiv.style.borderRadius = '10px';
-                    botMessageDiv.style.marginBottom = '10px';
-                    
-                    // Resposta simulada baseada em palavras-chave
-                    let response = "Desculpe, não entendi sua pergunta. Pode reformular?";
-                    
-                    if (message.toLowerCase().includes('endodontia')) {
-                        response = "A Endodontia é a especialidade que estuda a polpa dentária e os tecidos periapicais. Temos 5 materiais disponíveis sobre este tema, incluindo anatomia interna dos dentes e técnicas de tratamento. Você pode acessá-los na seção de Endodontia.";
-                    } else if (message.toLowerCase().includes('ortodontia')) {
-                        response = "A Ortodontia trata da correção das estruturas dento-faciais. Temos 6 materiais sobre classificação das más oclusões, desenvolvimento da dentição e outros tópicos importantes. Acesse-os na seção de Ortodontia.";
-                    } else if (message.toLowerCase().includes('periodontia')) {
-                        response = "A Periodontia estuda os tecidos de suporte dos dentes. Temos um material completo sobre a nova classificação das doenças periodontais. Você pode acessá-lo na seção de Periodontia.";
-                    } else if (message.toLowerCase().includes('prótese')) {
-                        response = "A Prótese Dentária visa a reconstrução de dentes danificados ou ausentes. Temos materiais sobre prótese parcial removível e conceitos fundamentais. Acesse-os na seção de Prótese Dentária.";
-                    } else if (message.toLowerCase().includes('anestesia') || message.toLowerCase().includes('anestesiologia')) {
-                        response = "A Anestesiologia em Odontologia estuda os mecanismos de controle da dor. Temos 5 materiais disponíveis sobre considerações anatômicas, técnicas e manejos, complicações e emergências. Você pode acessá-los na seção de Anestesiologia.";
-                    } else if (message.toLowerCase().includes('especialidade')) {
-                        response = "O FBBR_Odonto oferece materiais para diversas especialidades odontológicas, como Endodontia, Ortodontia, Periodontia, Prótese Dentária, Anestesiologia, Cariologia, Dentística, Farmacologia, Materiais Odontológicos, Oclusão e Odontologia Legal. Qual delas você gostaria de explorar?";
-                    } else if (message.toLowerCase().includes('material') || message.toLowerCase().includes('pdf')) {
-                        response = "Temos mais de 40 materiais em PDF disponíveis para download gratuito, organizados por especialidade. Você pode acessá-los através da página de Especialidades ou Resumos. Qual área específica você está procurando?";
-                    } else if (message.toLowerCase().includes('questão') || message.toLowerCase().includes('prova')) {
-                        response = "Na seção de Questões, você encontrará exercícios e questões de provas anteriores para testar seus conhecimentos. As questões estão organizadas por especialidade e nível de dificuldade. Acesse a página de Questões para começar a praticar.";
-                    } else if (message.toLowerCase().includes('olá') || message.toLowerCase().includes('oi') || message.toLowerCase().includes('bom dia') || message.toLowerCase().includes('boa tarde') || message.toLowerCase().includes('boa noite')) {
-                        response = "Olá! Sou o DON_FBBR, seu assistente virtual de estudos em Odontologia. Como posso ajudar você hoje? Posso fornecer informações sobre especialidades, recomendar materiais de estudo ou responder dúvidas sobre odontologia.";
+            
+            // Demo Chat
+            const demoChatInput = document.getElementById('demo-chat-input');
+            const demoChatSend = document.getElementById('demo-chat-send');
+            const demoChatBody = document.getElementById('demo-chat-body');
+            
+            if (demoChatSend && demoChatInput && demoChatBody) {
+                demoChatSend.addEventListener('click', sendDemoMessage);
+                demoChatInput.addEventListener('keypress', (e) => {
+                    if (e.key === 'Enter') {
+                        sendDemoMessage();
                     }
-                    
-                    botMessageDiv.innerHTML = `<p><strong>DON_FBBR:</strong> ${response}</p>`;
-                    aiChatBody.appendChild(botMessageDiv);
-                    
-                    // Rolar para o final da conversa
-                    aiChatBody.scrollTop = aiChatBody.scrollHeight;
-                }, 1000);
+                });
                 
-                // Rolar para o final da conversa
-                aiChatBody.scrollTop = aiChatBody.scrollHeight;
-            }
-        }
-
-        // AI Demo Chat
-        const aiDemoInputField = document.getElementById('ai-demo-input-field');
-        const aiDemoSend = document.getElementById('ai-demo-send');
-        const aiDemoBody = document.getElementById('ai-demo-body');
-        
-        aiDemoSend.addEventListener('click', sendDemoMessage);
-        aiDemoInputField.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') {
-                sendDemoMessage();
+                function sendDemoMessage() {
+                    const message = demoChatInput.value.trim();
+                    if (message) {
+                        // Adicionar mensagem do usuário
+                        const userMessageDiv = document.createElement('div');
+                        userMessageDiv.className = 'user-message';
+                        userMessageDiv.innerHTML = `<p><strong>Você:</strong> ${message}</p>`;
+                        demoChatBody.appendChild(userMessageDiv);
+                        
+                        // Limpar campo de entrada
+                        demoChatInput.value = '';
+                        
+                        // Mostrar indicador de digitação
+                        const typingDiv = document.createElement('div');
+                        typingDiv.className = 'ai-message typing-indicator';
+                        typingDiv.innerHTML = '<p><strong>DON_FBBR:</strong> <span class="typing-animation">Buscando informações...</span></p>';
+                        demoChatBody.appendChild(typingDiv);
+                        
+                        // Rolar para o final da conversa
+                        demoChatBody.scrollTop = demoChatBody.scrollHeight;
+                        
+                        // Simular resposta do DON_FBBR
+                        setTimeout(() => {
+                            // Remover indicador de digitação
+                            demoChatBody.removeChild(typingDiv);
+                            
+                            // Criar elemento para resposta
+                            const botMessageDiv = document.createElement('div');
+                            botMessageDiv.className = 'ai-message';
+                            
+                            // Resposta simulada baseada em palavras-chave
+                            let response = "Desculpe, não entendi sua pergunta. Pode reformular? Você pode perguntar sobre especialidades odontológicas, materiais de estudo ou conceitos específicos.";
+                            
+                            const messageLower = message.toLowerCase();
+                            
+                            if (messageLower.includes('farmaco') || messageLower.includes('farmacologia')) {
+                                response = "A Farmacologia em Odontologia estuda os medicamentos utilizados na prática odontológica. Temos 5 materiais disponíveis sobre analgésicos, anti-inflamatórios, antibióticos, anestésicos locais e interações medicamentosas. Você pode acessá-los na seção de Farmacologia da página de Especialidades.";
+                            } else if (messageLower.includes('endodontia') || messageLower.includes('canal')) {
+                                response = "A Endodontia é a especialidade que estuda a polpa dentária e os tecidos periapicais. Temos 5 materiais disponíveis sobre este tema, incluindo anatomia interna dos dentes e técnicas de tratamento. Você pode acessá-los na seção de Endodontia.";
+                            } else if (messageLower.includes('ortodontia')) {
+                                response = "A Ortodontia trata da correção das estruturas dento-faciais. Temos 6 materiais sobre classificação das más oclusões, desenvolvimento da dentição e outros tópicos importantes. Acesse-os na seção de Ortodontia.";
+                            } else if (messageLower.includes('periodontia')) {
+                                response = "A Periodontia estuda os tecidos de suporte dos dentes. Temos um material completo sobre a nova classificação das doenças periodontais. Você pode acessá-lo na seção de Periodontia.";
+                            } else if (messageLower.includes('prótese') || messageLower.includes('protese')) {
+                                response = "A Prótese Dentária visa a reconstrução de dentes danificados ou ausentes. Temos materiais sobre prótese parcial removível e conceitos fundamentais. Acesse-os na seção de Prótese Dentária.";
+                            } else if (messageLower.includes('anestesia') || messageLower.includes('anestesiologia')) {
+                                response = "A Anestesiologia em Odontologia estuda os mecanismos de controle da dor. Temos 5 materiais disponíveis sobre considerações anatômicas, técnicas e manejos, complicações e emergências. Você pode acessá-los na seção de Anestesiologia.";
+                            } else if (messageLower.includes('especialidade')) {
+                                response = "O FBBR_Odonto oferece materiais para diversas especialidades odontológicas, como Endodontia, Ortodontia, Periodontia, Prótese Dentária, Anestesiologia, Cariologia, Dentística, Farmacologia, Materiais Odontológicos, Oclusão e Odontologia Legal. Qual delas você gostaria de explorar?";
+                            } else if (messageLower.includes('material') || messageLower.includes('pdf')) {
+                                response = "Temos mais de 40 materiais em PDF disponíveis para download gratuito, organizados por especialidade. Você pode acessá-los através da página de Especialidades ou Resumos. Qual área específica você está procurando?";
+                            } else if (messageLower.includes('questão') || messageLower.includes('prova')) {
+                                response = "Na seção de Questões, você encontrará exercícios e questões de provas anteriores para testar seus conhecimentos. As questões estão organizadas por especialidade e nível de dificuldade. Acesse a página de Questões para começar a praticar.";
+                            } else if (messageLower.includes('olá') || messageLower.includes('oi') || messageLower.includes('bom dia') || messageLower.includes('boa tarde') || messageLower.includes('boa noite')) {
+                                response = "Olá! Sou o DON_FBBR-A sua Inteligência Artificial, seu assistente virtual de estudos em Odontologia. Como posso ajudar você hoje? Posso fornecer informações sobre especialidades, recomendar materiais de estudo ou responder dúvidas sobre odontologia.";
+                            }
+                            
+                            botMessageDiv.innerHTML = `<p><strong>DON_FBBR:</strong> ${response}</p>`;
+                            demoChatBody.appendChild(botMessageDiv);
+                            
+                            // Rolar para o final da conversa
+                            demoChatBody.scrollTop = demoChatBody.scrollHeight;
+                        }, 1500);
+                    }
+                }
             }
         });
-        
-        function sendDemoMessage() {
-            const message = aiDemoInputField.value.trim();
-            if (message) {
-                // Adicionar mensagem do usuário
-                const userMessageDiv = document.createElement('div');
-                userMessageDiv.className = 'user-message';
-                userMessageDiv.innerHTML = `<p><strong>Você:</strong> ${message}</p>`;
-                aiDemoBody.appendChild(userMessageDiv);
-                
-                // Limpar campo de entrada
-                aiDemoInputField.value = '';
-                
-                // Adicionar indicador de digitação
-                const typingDiv = document.createElement('div');
-                typingDiv.className = 'ai-message typing-animation';
-                typingDiv.innerHTML = `<p><strong>DON_FBBR:</strong> Digitando</p>`;
-                aiDemoBody.appendChild(typingDiv);
-                
-                // Rolar para o final da conversa
-                aiDemoBody.scrollTop = aiDemoBody.scrollHeight;
-                
-                // Simular resposta do DON_FBBR após um tempo
-                setTimeout(() => {
-                    // Remover indicador de digitação
-                    aiDemoBody.removeChild(typingDiv);
-                    
-                    const botMessageDiv = document.createElement('div');
-                    botMessageDiv.className = 'ai-message';
-                    
-                    // Resposta simulada baseada em palavras-chave
-                    let response = "Desculpe, não entendi sua pergunta. Pode reformular?";
-                    
-                    if (message.toLowerCase().includes('endodontia')) {
-                        response = "A Endodontia é a especialidade que estuda a polpa dentária e os tecidos periapicais. Temos 5 materiais disponíveis sobre este tema, incluindo anatomia interna dos dentes e técnicas de tratamento. Você pode acessá-los na seção de Endodontia.";
-                    } else if (message.toLowerCase().includes('ortodontia')) {
-                        response = "A Ortodontia trata da correção das estruturas dento-faciais. Temos 6 materiais sobre classificação das más oclusões, desenvolvimento da dentição e outros tópicos importantes. Acesse-os na seção de Ortodontia.";
-                    } else if (message.toLowerCase().includes('periodontia')) {
-                        response = "A Periodontia estuda os tecidos de suporte dos dentes. Temos um material completo sobre a nova classificação das doenças periodontais. Você pode acessá-lo na seção de Periodontia.";
-                    } else if (message.toLowerCase().includes('prótese')) {
-                        response = "A Prótese Dentária visa a reconstrução de dentes danificados ou ausentes. Temos materiais sobre prótese parcial removível e conceitos fundamentais. Acesse-os na seção de Prótese Dentária.";
-                    } else if (message.toLowerCase().includes('anestesia') || message.toLowerCase().includes('anestesiologia')) {
-                        response = "A Anestesiologia em Odontologia estuda os mecanismos de controle da dor. Temos 5 materiais disponíveis sobre considerações anatômicas, técnicas e manejos, complicações e emergências. Você pode acessá-los na seção de Anestesiologia.";
-                    } else if (message.toLowerCase().includes('especialidade')) {
-                        response = "O FBBR_Odonto oferece materiais para diversas especialidades odontológicas, como Endodontia, Ortodontia, Periodontia, Prótese Dentária, Anestesiologia, Cariologia, Dentística, Farmacologia, Materiais Odontológicos, Oclusão e Odontologia Legal. Qual delas você gostaria de explorar?";
-                    } else if (message.toLowerCase().includes('material') || message.toLowerCase().includes('pdf')) {
-                        response = "Temos mais de 40 materiais em PDF disponíveis para download gratuito, organizados por especialidade. Você pode acessá-los através da página de Especialidades ou Resumos. Qual área específica você está procurando?";
-                    } else if (message.toLowerCase().includes('questão') || message.toLowerCase().includes('prova')) {
-                        response = "Na seção de Questões, você encontrará exercícios e questões de provas anteriores para testar seus conhecimentos. As questões estão organizadas por especialidade e nível de dificuldade. Acesse a página de Questões para começar a praticar.";
-                    } else if (message.toLowerCase().includes('olá') || message.toLowerCase().includes('oi') || message.toLowerCase().includes('bom dia') || message.toLowerCase().includes('boa tarde') || message.toLowerCase().includes('boa noite')) {
-                        response = "Olá! Sou o DON_FBBR, seu assistente virtual de estudos em Odontologia. Como posso ajudar você hoje? Posso fornecer informações sobre especialidades, recomendar materiais de estudo ou responder dúvidas sobre odontologia.";
-                    }
-                    
-                    botMessageDiv.innerHTML = `<p><strong>DON_FBBR:</strong> ${response}</p>`;
-                    aiDemoBody.appendChild(botMessageDiv);
-                    
-                    // Rolar para o final da conversa
-                    aiDemoBody.scrollTop = aiDemoBody.scrollHeight;
-                }, 1500);
-            }
-        }
     </script>
 </body>
 </html>
