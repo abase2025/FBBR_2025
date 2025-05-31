@@ -6,203 +6,8 @@
     <title>Contato - FBBR_Odonto</title>
     <link rel="stylesheet" href="assets/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <meta name="description" content="Entre em contato com a equipe do FBBR_Odonto para dúvidas, sugestões ou parcerias.">
+    <meta name="description" content="Entre em contato com a equipe do FBBR_Odonto para dúvidas, sugestões ou informações sobre nossos materiais de estudo em odontologia.">
     <meta name="author" content="Harrison Costa">
-    <style>
-        .contact-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 30px;
-            margin: 2rem 0;
-        }
-        
-        .contact-form {
-            flex: 1;
-            min-width: 300px;
-            background-color: #fff;
-            border: 1px solid var(--vintage-border);
-            border-radius: 8px;
-            padding: 2rem;
-            box-shadow: 0 4px 15px var(--shadow-color);
-        }
-        
-        .contact-info {
-            flex: 1;
-            min-width: 300px;
-            background-color: #fff;
-            border: 1px solid var(--vintage-border);
-            border-radius: 8px;
-            padding: 2rem;
-            box-shadow: 0 4px 15px var(--shadow-color);
-        }
-        
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-        
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-            color: var(--primary-color);
-        }
-        
-        .form-control {
-            width: 100%;
-            padding: 0.8rem;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-family: 'Baskerville', serif;
-            font-size: 1rem;
-            transition: border-color 0.3s ease;
-        }
-        
-        .form-control:focus {
-            outline: none;
-            border-color: var(--accent-color);
-            box-shadow: 0 0 0 2px rgba(30, 136, 229, 0.2);
-        }
-        
-        textarea.form-control {
-            min-height: 150px;
-            resize: vertical;
-        }
-        
-        .contact-info h3 {
-            color: var(--primary-color);
-            margin-top: 0;
-            border-bottom: 2px solid var(--secondary-color);
-            padding-bottom: 0.5rem;
-            display: inline-block;
-        }
-        
-        .contact-info p {
-            margin-bottom: 1.5rem;
-            line-height: 1.8;
-        }
-        
-        .contact-info-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 1rem;
-        }
-        
-        .contact-info-item i {
-            width: 30px;
-            height: 30px;
-            background-color: var(--primary-color);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-right: 1rem;
-        }
-        
-        .team-section {
-            margin-top: 3rem;
-        }
-        
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 30px;
-            margin-top: 2rem;
-        }
-        
-        .team-member {
-            background-color: #fff;
-            border: 1px solid var(--vintage-border);
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px var(--shadow-color);
-            transition: all 0.3s ease;
-            text-align: center;
-        }
-        
-        .team-member:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-        }
-        
-        .team-member-img {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            margin: 2rem auto 1rem;
-            overflow: hidden;
-            border: 3px solid var(--secondary-color);
-        }
-        
-        .team-member-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        
-        .team-member-info {
-            padding: 1rem 1.5rem 2rem;
-        }
-        
-        .team-member-name {
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: var(--primary-color);
-            margin-bottom: 0.5rem;
-        }
-        
-        .team-member-role {
-            font-size: 0.9rem;
-            color: #666;
-            margin-bottom: 1rem;
-        }
-        
-        .team-member-desc {
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-        
-        .page-header {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-        
-        .page-header h1 {
-            color: var(--primary-color);
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-        
-        .page-header p {
-            max-width: 800px;
-            margin: 0 auto;
-            color: #666;
-        }
-        
-        .social-links {
-            display: flex;
-            gap: 15px;
-            margin-top: 1.5rem;
-            justify-content: center;
-        }
-        
-        .social-link {
-            width: 40px;
-            height: 40px;
-            background-color: var(--primary-color);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            transition: all 0.3s ease;
-        }
-        
-        .social-link:hover {
-            background-color: var(--accent-color);
-            transform: translateY(-3px);
-        }
-    </style>
 </head>
 <body>
     <!-- Cabeçalho -->
@@ -238,131 +43,136 @@
     <!-- Conteúdo Principal -->
     <section class="section">
         <div class="container">
-            <div class="page-header">
-                <h1>Entre em Contato</h1>
-                <p>Estamos aqui para ajudar! Envie-nos uma mensagem e responderemos o mais breve possível.</p>
-            </div>
-            
-            <div class="contact-container">
-                <div class="contact-form">
-                    <h3>Envie uma Mensagem</h3>
-                    <p>Preencha o formulário abaixo e entraremos em contato o mais breve possível.</p>
-                    <form id="contact-form">
-                        <div class="form-group">
-                            <label for="name">Nome Completo</label>
-                            <input type="text" id="name" class="form-control" placeholder="Digite seu nome completo" required>
+            <div class="row" style="display: flex; flex-wrap: wrap; gap: 30px;">
+                <div class="col" style="flex: 1; min-width: 300px;">
+                    <div class="contact-form">
+                        <h2>Envie uma Mensagem</h2>
+                        <p>Preencha o formulário abaixo e entraremos em contato o mais breve possível.</p>
+                        
+                        <div class="success-message" id="success-message">
+                            Sua mensagem foi enviada com sucesso! Entraremos em contato em breve.
                         </div>
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" class="form-control" placeholder="Digite seu email" required>
+                        
+                        <div class="error-message" id="error-message">
+                            Ocorreu um erro ao enviar sua mensagem. Por favor, tente novamente.
                         </div>
-                        <div class="form-group">
-                            <label for="subject">Assunto</label>
-                            <input type="text" id="subject" class="form-control" placeholder="Digite o assunto" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Mensagem</label>
-                            <textarea id="message" class="form-control" placeholder="Digite sua mensagem" required></textarea>
-                        </div>
-                        <button type="submit" class="btn">Enviar Mensagem</button>
-                    </form>
+                        
+                        <form id="contact-form">
+                            <div class="form-group">
+                                <label for="name">Nome Completo</label>
+                                <input type="text" id="name" name="name" class="form-control" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" class="form-control" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="subject">Assunto</label>
+                                <input type="text" id="subject" name="subject" class="form-control" required>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="message">Mensagem</label>
+                                <textarea id="message" name="message" class="form-control" required></textarea>
+                            </div>
+                            
+                            <button type="submit" class="submit-btn">Enviar Mensagem</button>
+                        </form>
+                    </div>
                 </div>
                 
-                <div class="contact-info">
-                    <h3>Informações de Contato</h3>
-                    <p>Você pode nos contatar através dos seguintes meios:</p>
-                    
-                    <div class="contact-info-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <div>
-                            <strong>Endereço</strong><br>
-                            Av. Alberto Passos, 294 - Centro, Cruz das Almas - BA, 44380-000
+                <div class="col" style="flex: 1; min-width: 300px;">
+                    <div class="contact-info">
+                        <h2 class="contact-info-title">Informações de Contato</h2>
+                        
+                        <p>Você pode nos contatar através dos seguintes meios:</p>
+                        
+                        <div class="contact-info-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div class="contact-info-item-content">
+                                <h4>Endereço</h4>
+                                <p>Av. Alberto Passos, 294 - Centro, Cruz das Almas - BA, 44380-000</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-info-item">
+                            <i class="fas fa-phone"></i>
+                            <div class="contact-info-item-content">
+                                <h4>Telefone</h4>
+                                <p>(75) 3017-0879</p>
+                                <p>(75) 98823-4776</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-info-item">
+                            <i class="fas fa-envelope"></i>
+                            <div class="contact-info-item-content">
+                                <h4>Email</h4>
+                                <p>rlambaia2023@gmail.com</p>
+                            </div>
+                        </div>
+                        
+                        <div class="contact-info-item">
+                            <i class="fas fa-clock"></i>
+                            <div class="contact-info-item-content">
+                                <h4>Horário de Atendimento</h4>
+                                <p>Segunda a Sexta: 8h às 18h</p>
+                                <p>Sábado: 8h às 12h</p>
+                            </div>
                         </div>
                     </div>
                     
-                    <div class="contact-info-item">
-                        <i class="fas fa-phone"></i>
-                        <div>
-                            <strong>Telefone</strong><br>
-                            (75) 3017-0879<br>
-                            (75) 98823-4776
-                        </div>
-                    </div>
-                    
-                    <div class="contact-info-item">
-                        <i class="fas fa-envelope"></i>
-                        <div>
-                            <strong>Email</strong><br>
-                            vestibular@atmos.edu.br
-                        </div>
-                    </div>
-                    
-                    <div class="contact-info-item">
-                        <i class="fas fa-clock"></i>
-                        <div>
-                            <strong>Horário de Atendimento</strong><br>
-                            Segunda a Sexta: 8h às 18h<br>
-                            Sábado: 8h às 12h
-                        </div>
-                    </div>
-                    
-                    <div class="social-links">
-                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                    <div class="map-container">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15608.158083415236!2d-39.10918702345582!3d-12.671682087168328!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x715b7a7a3f8c61f%3A0x1d8b0f8a420e9f9e!2sCruz%20das%20Almas%2C%20BA%2C%2044380-000!5e0!3m2!1spt-BR!2sbr!4v1653925678954!5m2!1spt-BR!2sbr" allowfullscreen="" loading="lazy"></iframe>
                     </div>
                 </div>
             </div>
+        </div>
+    </section>
+
+    <!-- Nossa Equipe -->
+    <section class="section team-section" style="background-color: #f5f5f5;">
+        <div class="container">
+            <div class="section-title">
+                <h2>Nossa Equipe</h2>
+            </div>
             
-            <div class="team-section">
-                <div class="section-title">
-                    <h2>Nossa Equipe</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                    <img src="assets/images/Dani.jpg" alt="Daniella Carvalho Gomes de Cerqueira" class="team-member-image">
+                    <div class="team-member-info">
+                        <h3>Daniella Carvalho Gomes de Cerqueira</h3>
+                        <p class="team-member-role">Coordenação dos cursos de saúde FBBR</p>
+                        <p>A sua ideia foi o start. Gratidão</p>
+                    </div>
                 </div>
                 
-                <div class="team-grid">
-                    <div class="team-member">
-                        <div class="team-member-img">
-                            <img src="assets/images/placeholder-person.jpg" alt="Daniella Carvalho">
-                        </div>
-                        <div class="team-member-info">
-                            <div class="team-member-name">Daniella Carvalho Gomes de Cerqueira</div>
-                            <div class="team-member-role">Coordenação dos cursos de saúde FBBR</div>
-                            <div class="team-member-desc">A sua ideia foi o start. Gratidão</div>
-                        </div>
+                <div class="team-member">
+                    <img src="assets/images/felipe.jpg" alt="Felipe" class="team-member-image">
+                    <div class="team-member-info">
+                        <h3>Felipe</h3>
+                        <p class="team-member-role">Coordenador do curso de Odontologia</p>
+                        <p>Obrigado pelas dicas e apoio.</p>
                     </div>
-                    
-                    <div class="team-member">
-                        <div class="team-member-img">
-                            <img src="assets/images/placeholder-person.jpg" alt="Felipe">
-                        </div>
-                        <div class="team-member-info">
-                            <div class="team-member-name">Felipe</div>
-                            <div class="team-member-role">Coordenador do curso de Odontologia</div>
-                            <div class="team-member-desc">Obrigado pelas dicas e apoio.</div>
-                        </div>
+                </div>
+                
+                <div class="team-member">
+                    <img src="assets/images/eric.jpg" alt="Prof. Eric" class="team-member-image">
+                    <div class="team-member-info">
+                        <h3>Prof. Eric</h3>
+                        <p class="team-member-role">Professor</p>
+                        <p>Suas dicas deram vida ao projeto. Fundamental pelas dicas e apoio e incentivos.</p>
                     </div>
-                    
-                    <div class="team-member">
-                        <div class="team-member-img">
-                            <img src="assets/images/placeholder-person.jpg" alt="Prof. Eric">
-                        </div>
-                        <div class="team-member-info">
-                            <div class="team-member-name">Prof. Eric</div>
-                            <div class="team-member-role">Professor</div>
-                            <div class="team-member-desc">Suas dicas deram vida ao projeto. Fundamental pelas dicas e apoio e incentivos.</div>
-                        </div>
-                    </div>
-                    
-                    <div class="team-member">
-                        <div class="team-member-img">
-                            <img src="assets/images/placeholder-person.jpg" alt="Harrison Ribeiro Costa">
-                        </div>
-                        <div class="team-member-info">
-                            <div class="team-member-name">Harrison Ribeiro Costa</div>
-                            <div class="team-member-role">Desenvolvedor e Estudante</div>
-                            <div class="team-member-desc">Desenvolvedor e Estudante da Instituição em Odontologia</div>
-                        </div>
+                </div>
+                
+                <div class="team-member">
+                    <img src="assets/images/placeholder-person.jpg" alt="Harrison Ribeiro Costa" class="team-member-image">
+                    <div class="team-member-info">
+                        <h3>Harrison Ribeiro Costa</h3>
+                        <p class="team-member-role">Desenvolvedor e Estudante</p>
+                        <p>Desenvolvedor e Estudante da Instituição em Odontologia</p>
                     </div>
                 </div>
             </div>
@@ -434,29 +244,6 @@
             menu.classList.toggle('show');
         });
 
-        // Form Submission
-        const contactForm = document.getElementById('contact-form');
-        
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Simulação de envio (em uma aplicação real, isso seria processado pelo backend)
-            const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
-            const subject = document.getElementById('subject').value;
-            const message = document.getElementById('message').value;
-            
-            // Validação simples
-            if (!name || !email || !subject || !message) {
-                alert('Por favor, preencha todos os campos.');
-                return;
-            }
-            
-            // Simulação de envio bem-sucedido
-            alert('Mensagem enviada com sucesso! Entraremos em contato em breve.');
-            contactForm.reset();
-        });
-
         // AI Chat Toggle
         const aiChatButton = document.getElementById('ai-chat-button');
         const aiChatWindow = document.getElementById('ai-chat-window');
@@ -504,16 +291,24 @@
                     // Resposta simulada baseada em palavras-chave
                     let response = "Desculpe, não entendi sua pergunta. Pode reformular?";
                     
-                    if (message.toLowerCase().includes('contato') || message.toLowerCase().includes('falar')) {
-                        response = "Você pode entrar em contato com a equipe do FBBR_Odonto através do formulário nesta página ou pelo e-mail vestibular@atmos.edu.br. Estamos sempre à disposição para ajudar!";
-                    } else if (message.toLowerCase().includes('endereço') || message.toLowerCase().includes('localização')) {
-                        response = "Nosso endereço é: Av. Alberto Passos, 294 - Centro, Cruz das Almas - BA, 44380-000.";
-                    } else if (message.toLowerCase().includes('telefone') || message.toLowerCase().includes('ligar')) {
-                        response = "Você pode nos contatar pelos telefones: (75) 3017-0879 ou (75) 98823-4776.";
-                    } else if (message.toLowerCase().includes('horário') || message.toLowerCase().includes('atendimento')) {
-                        response = "Nosso horário de atendimento é: Segunda a Sexta: 8h às 18h e Sábado: 8h às 12h.";
-                    } else if (message.toLowerCase().includes('equipe') || message.toLowerCase().includes('time')) {
-                        response = "Nossa equipe é composta por Daniella Carvalho (Coordenação dos cursos de saúde), Felipe (Coordenador do curso de Odontologia), Prof. Eric e Harrison Ribeiro Costa (Desenvolvedor e Estudante).";
+                    if (message.toLowerCase().includes('endodontia')) {
+                        response = "A Endodontia é a especialidade que estuda a polpa dentária e os tecidos periapicais. Temos 5 materiais disponíveis sobre este tema, incluindo anatomia interna dos dentes e técnicas de tratamento. Você pode acessá-los na seção de Endodontia.";
+                    } else if (message.toLowerCase().includes('ortodontia')) {
+                        response = "A Ortodontia trata da correção das estruturas dento-faciais. Temos 6 materiais sobre classificação das más oclusões, desenvolvimento da dentição e outros tópicos importantes. Acesse-os na seção de Ortodontia.";
+                    } else if (message.toLowerCase().includes('periodontia')) {
+                        response = "A Periodontia estuda os tecidos de suporte dos dentes. Temos um material completo sobre a nova classificação das doenças periodontais. Você pode acessá-lo na seção de Periodontia.";
+                    } else if (message.toLowerCase().includes('prótese')) {
+                        response = "A Prótese Dentária visa a reconstrução de dentes danificados ou ausentes. Temos materiais sobre prótese parcial removível e conceitos fundamentais. Acesse-os na seção de Prótese Dentária.";
+                    } else if (message.toLowerCase().includes('anestesia') || message.toLowerCase().includes('anestesiologia')) {
+                        response = "A Anestesiologia em Odontologia estuda os mecanismos de controle da dor. Temos 5 materiais disponíveis sobre considerações anatômicas, técnicas e manejos, complicações e emergências. Você pode acessá-los na seção de Anestesiologia.";
+                    } else if (message.toLowerCase().includes('especialidade')) {
+                        response = "O FBBR_Odonto oferece materiais para diversas especialidades odontológicas, como Endodontia, Ortodontia, Periodontia, Prótese Dentária, Anestesiologia, Cariologia, Dentística, Farmacologia, Materiais Odontológicos, Oclusão e Odontologia Legal. Qual delas você gostaria de explorar?";
+                    } else if (message.toLowerCase().includes('material') || message.toLowerCase().includes('pdf')) {
+                        response = "Temos mais de 40 materiais em PDF disponíveis para download gratuito, organizados por especialidade. Você pode acessá-los através da página de Especialidades ou Resumos. Qual área específica você está procurando?";
+                    } else if (message.toLowerCase().includes('questão') || message.toLowerCase().includes('prova')) {
+                        response = "Na seção de Questões, você encontrará exercícios e questões de provas anteriores para testar seus conhecimentos. As questões estão organizadas por especialidade e nível de dificuldade. Acesse a página de Questões para começar a praticar.";
+                    } else if (message.toLowerCase().includes('olá') || message.toLowerCase().includes('oi') || message.toLowerCase().includes('bom dia') || message.toLowerCase().includes('boa tarde') || message.toLowerCase().includes('boa noite')) {
+                        response = "Olá! Sou o DON_FBBR, seu assistente virtual de estudos em Odontologia. Como posso ajudar você hoje? Posso fornecer informações sobre especialidades, recomendar materiais de estudo ou responder dúvidas sobre odontologia.";
                     }
                     
                     botMessageDiv.innerHTML = `<p><strong>DON_FBBR:</strong> ${response}</p>`;
@@ -527,6 +322,41 @@
                 aiChatBody.scrollTop = aiChatBody.scrollHeight;
             }
         }
+
+        // Formulário de Contato
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+            
+            // Em uma aplicação real, aqui você enviaria os dados para um backend
+            // Simulando envio bem-sucedido
+            const successMessage = document.getElementById('success-message');
+            const errorMessage = document.getElementById('error-message');
+            
+            // Simulação de envio de email
+            console.log(`Enviando email para rlambaia2023@gmail.com com os dados:
+                Nome: ${name}
+                Email: ${email}
+                Assunto: ${subject}
+                Mensagem: ${message}
+            `);
+            
+            // Mostrar mensagem de sucesso
+            successMessage.classList.add('show');
+            errorMessage.classList.remove('show');
+            
+            // Limpar formulário
+            document.getElementById('contact-form').reset();
+            
+            // Esconder mensagem após 5 segundos
+            setTimeout(() => {
+                successMessage.classList.remove('show');
+            }, 5000);
+        });
     </script>
 </body>
 </html>
