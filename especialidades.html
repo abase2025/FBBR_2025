@@ -135,6 +135,178 @@
             display: inline-block;
             margin: 0 10px;
         }
+        
+        /* Estilos para o filtro avançado */
+        .filter-container {
+            background-color: #f9f7f0;
+            border: 1px solid var(--vintage-border);
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .filter-title {
+            font-family: 'Baskerville', serif;
+            color: var(--primary-color);
+            margin-top: 0;
+            margin-bottom: 1rem;
+            text-align: center;
+            font-size: 1.5rem;
+        }
+        
+        .filter-form {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+        
+        .filter-group {
+            margin-bottom: 1rem;
+        }
+        
+        .filter-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+        
+        .filter-input {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #e0d9c5;
+            border-radius: 4px;
+            font-family: 'Baskerville', serif;
+            font-size: 1rem;
+        }
+        
+        .filter-actions {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+            grid-column: 1 / -1;
+        }
+        
+        .filter-btn {
+            padding: 0.8rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Baskerville', serif;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+        
+        .filter-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .filter-btn.primary {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .filter-btn.secondary {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+        
+        .filter-btn.tertiary {
+            background-color: #f0f0f0;
+            color: #333;
+        }
+        
+        .no-results {
+            text-align: center;
+            padding: 2rem;
+            background-color: #f9f7f0;
+            border: 1px solid #e0d9c5;
+            border-radius: 8px;
+            margin: 2rem 0;
+            display: none;
+        }
+        
+        .no-results h3 {
+            color: var(--primary-color);
+            margin-top: 0;
+        }
+        
+        .online-results {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background-color: #f9f7f0;
+            border: 1px solid #e0d9c5;
+            border-radius: 8px;
+            display: none;
+        }
+        
+        .online-results h3 {
+            color: var(--primary-color);
+            margin-top: 0;
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+        
+        .online-result-item {
+            background-color: white;
+            padding: 1.2rem;
+            border-radius: 6px;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+        
+        .online-result-item h4 {
+            margin-top: 0;
+            color: var(--primary-color);
+        }
+        
+        .online-result-item p {
+            margin-bottom: 1rem;
+        }
+        
+        .online-result-actions {
+            display: flex;
+            justify-content: flex-end;
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 2rem;
+        }
+        
+        .loading i {
+            margin-right: 0.5rem;
+            color: var(--primary-color);
+        }
+        
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .filter-form {
+                grid-template-columns: 1fr;
+            }
+            
+            .material-item {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .material-title {
+                margin-bottom: 1rem;
+            }
+            
+            .material-actions {
+                width: 100%;
+                justify-content: space-between;
+            }
+        }
     </style>
 </head>
 <body>
@@ -175,6 +347,48 @@
                 <h2>Explore por Especialidade</h2>
             </div>
             
+            <!-- Filtro Avançado -->
+            <div class="filter-container">
+                <h3 class="filter-title">Filtro Avançado</h3>
+                <form id="filter-form" class="filter-form">
+                    <div class="filter-group">
+                        <label for="filter-materia" class="filter-label">Matéria</label>
+                        <input type="text" id="filter-materia" class="filter-input" placeholder="Ex: Endodontia, Ortodontia...">
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label for="filter-tema" class="filter-label">Tema</label>
+                        <input type="text" id="filter-tema" class="filter-input" placeholder="Ex: Anatomia, Técnicas...">
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label for="filter-palavra-chave" class="filter-label">Palavra-chave</label>
+                        <input type="text" id="filter-palavra-chave" class="filter-input" placeholder="Ex: Canal, Oclusão...">
+                    </div>
+                    
+                    <div class="filter-actions">
+                        <button type="submit" class="filter-btn primary">
+                            <i class="fas fa-search"></i> Filtrar
+                        </button>
+                        <button type="button" id="search-online" class="filter-btn secondary">
+                            <i class="fas fa-globe"></i> Buscar Online
+                        </button>
+                        <button type="button" id="clear-filter" class="filter-btn tertiary">
+                            <i class="fas fa-times"></i> Limpar
+                        </button>
+                    </div>
+                </form>
+            </div>
+            
+            <!-- Mensagem de Nenhum Resultado -->
+            <div id="no-results" class="no-results">
+                <h3>Nenhum resultado encontrado</h3>
+                <p>Tente ajustar seus critérios de busca ou use a opção "Buscar Online" para encontrar materiais na internet.</p>
+            </div>
+            
+            <!-- Resultados Online -->
+            <div id="online-results" class="online-results"></div>
+            
             <div class="ornament"></div>
             
             <!-- Endodontia -->
@@ -193,7 +407,7 @@
                         <div class="material-item">
                             <span class="material-title">Introdução e Anatomia Interna dos Dentes</span>
                             <div class="material-actions">
-                                <a href="pdf-viewer.html?pdf=assets/pdfs/endodontia/Endodontia-Introduçãoeanatomiainternadosdentes.pdf&title=Introdução e Anatomia Interna dos Dentes" class="material-btn view">Visualizar</a>
+                                <a href="pdf-viewer.html?pdf=assets/pdfs/endodontia/Endodontia-Introduçãoeanatomiainternadosdentes.pdf&title=Introdução e Anatomia Interna dos Dentes&return=especialidades.html&collection=endodontia&index=0" class="material-btn view">Visualizar</a>
                                 <a href="assets/pdfs/endodontia/Endodontia-Introduçãoeanatomiainternadosdentes.pdf" download class="material-btn download">Download</a>
                             </div>
                         </div>
@@ -201,7 +415,7 @@
                         <div class="material-item">
                             <span class="material-title">Endodontia Completo</span>
                             <div class="material-actions">
-                                <a href="pdf-viewer.html?pdf=assets/pdfs/endodontia/endondotia.pdf&title=Endodontia Completo" class="material-btn view">Visualizar</a>
+                                <a href="pdf-viewer.html?pdf=assets/pdfs/endodontia/endondotia.pdf&title=Endodontia Completo&return=especialidades.html&collection=endodontia&index=1" class="material-btn view">Visualizar</a>
                                 <a href="assets/pdfs/endodontia/endondotia.pdf" download class="material-btn download">Download</a>
                             </div>
                         </div>
@@ -209,7 +423,7 @@
                         <div class="material-item">
                             <span class="material-title">Técnicas Endodônticas - Parte 1</span>
                             <div class="material-actions">
-                                <a href="pdf-viewer.html?pdf=assets/pdfs/endodontia/endondotia1.pdf&title=Técnicas Endodônticas - Parte 1" class="material-btn view">Visualizar</a>
+                                <a href="pdf-viewer.html?pdf=assets/pdfs/endodontia/endondotia1.pdf&title=Técnicas Endodônticas - Parte 1&return=especialidades.html&collection=endodontia&index=2" class="material-btn view">Visualizar</a>
                                 <a href="assets/pdfs/endodontia/endondotia1.pdf" download class="material-btn download">Download</a>
                             </div>
                         </div>
@@ -217,7 +431,7 @@
                         <div class="material-item">
                             <span class="material-title">Técnicas Endodônticas - Parte 2</span>
                             <div class="material-actions">
-                                <a href="pdf-viewer.html?pdf=assets/pdfs/endodontia/endondotia2.pdf&title=Técnicas Endodônticas - Parte 2" class="material-btn view">Visualizar</a>
+                                <a href="pdf-viewer.html?pdf=assets/pdfs/endodontia/endondotia2.pdf&title=Técnicas Endodônticas - Parte 2&return=especialidades.html&collection=endodontia&index=3" class="material-btn view">Visualizar</a>
                                 <a href="assets/pdfs/endodontia/endondotia2.pdf" download class="material-btn download">Download</a>
                             </div>
                         </div>
@@ -225,7 +439,7 @@
                         <div class="material-item">
                             <span class="material-title">Técnicas Endodônticas - Parte 3</span>
                             <div class="material-actions">
-                                <a href="pdf-viewer.html?pdf=assets/pdfs/endodontia/endondotia3.pdf&title=Técnicas Endodônticas - Parte 3" class="material-btn view">Visualizar</a>
+                                <a href="pdf-viewer.html?pdf=assets/pdfs/endodontia/endondotia3.pdf&title=Técnicas Endodônticas - Parte 3&return=especialidades.html&collection=endodontia&index=4" class="material-btn view">Visualizar</a>
                                 <a href="assets/pdfs/endodontia/endondotia3.pdf" download class="material-btn download">Download</a>
                             </div>
                         </div>
@@ -254,7 +468,7 @@
                         <div class="material-item">
                             <span class="material-title">Ortodontia Completo</span>
                             <div class="material-actions">
-                                <a href="pdf-viewer.html?pdf=assets/pdfs/ortodontia/ORTODONTIA.pdf&title=Ortodontia Completo" class="material-btn view">Visualizar</a>
+                                <a href="pdf-viewer.html?pdf=assets/pdfs/ortodontia/ORTODONTIA.pdf&title=Ortodontia Completo&return=especialidades.html&collection=ortodontia&index=0" class="material-btn view">Visualizar</a>
                                 <a href="assets/pdfs/ortodontia/ORTODONTIA.pdf" download class="material-btn download">Download</a>
                             </div>
                         </div>
@@ -262,7 +476,7 @@
                         <div class="material-item">
                             <span class="material-title">Classificação das Más Oclusões</span>
                             <div class="material-actions">
-                                <a href="pdf-viewer.html?pdf=assets/pdfs/ortodontia/ORTODONTIA-Classificaçãodasmásoclusões.pdf&title=Classificação das Más Oclusões" class="material-btn view">Visualizar</a>
+                                <a href="pdf-viewer.html?pdf=assets/pdfs/ortodontia/ORTODONTIA-Classificaçãodasmásoclusões.pdf&title=Classificação das Más Oclusões&return=especialidades.html&collection=ortodontia&index=1" class="material-btn view">Visualizar</a>
                                 <a href="assets/pdfs/ortodontia/ORTODONTIA-Classificaçãodasmásoclusões.pdf" download class="material-btn download">Download</a>
                             </div>
                         </div>
@@ -270,7 +484,7 @@
                         <div class="material-item">
                             <span class="material-title">Desenvolvimento da Dentição</span>
                             <div class="material-actions">
-                                <a href="pdf-viewer.html?pdf=assets/pdfs/ortodontia/ORTODONTIA-Desenvolvimentodadentição.pdf&title=Desenvolvimento da Dentição" class="material-btn view">Visualizar</a>
+                                <a href="pdf-viewer.html?pdf=assets/pdfs/ortodontia/ORTODONTIA-Desenvolvimentodadentição.pdf&title=Desenvolvimento da Dentição&return=especialidades.html&collection=ortodontia&index=2" class="material-btn view">Visualizar</a>
                                 <a href="assets/pdfs/ortodontia/ORTODONTIA-Desenvolvimentodadentição.pdf" download class="material-btn download">Download</a>
                             </div>
                         </div>
@@ -278,7 +492,7 @@
                         <div class="material-item">
                             <span class="material-title">Etiologia das Más Oclusões</span>
                             <div class="material-actions">
-                                <a href="pdf-viewer.html?pdf=assets/pdfs/ortodontia/ORTODONTIA-Etiologiadasmásoclusões.pdf&title=Etiologia das Más Oclusões" class="material-btn view">Visualizar</a>
+                                <a href="pdf-viewer.html?pdf=assets/pdfs/ortodontia/ORTODONTIA-Etiologiadasmásoclusões.pdf&title=Etiologia das Más Oclusões&return=especialidades.html&collection=ortodontia&index=3" class="material-btn view">Visualizar</a>
                                 <a href="assets/pdfs/ortodontia/ORTODONTIA-Etiologiadasmásoclusões.pdf" download class="material-btn download">Download</a>
                             </div>
                         </div>
@@ -286,7 +500,7 @@
                         <div class="material-item">
                             <span class="material-title">Mordida Aberta e Mantenedor de Espaço</span>
                             <div class="material-actions">
-                                <a href="pdf-viewer.html?pdf=assets/pdfs/ortodontia/ORTODONTIA-MordidaabertaeMantenedordeespaço.pdf&title=Mordida Aberta e Mantenedor de Espaço" class="material-btn view">Visualizar</a>
+                                <a href="pdf-viewer.html?pdf=assets/pdfs/ortodontia/ORTODONTIA-MordidaabertaeMantenedordeespaço.pdf&title=Mordida Aberta e Mantenedor de Espaço&return=especialidades.html&collection=ortodontia&index=4" class="material-btn view">Visualizar</a>
                                 <a href="assets/pdfs/ortodontia/ORTODONTIA-MordidaabertaeMantenedordeespaço.pdf" download class="material-btn download">Download</a>
                             </div>
                         </div>
@@ -294,7 +508,7 @@
                         <div class="material-item">
                             <span class="material-title">Ortodontia - Material Complementar</span>
                             <div class="material-actions">
-                                <a href="pdf-viewer.html?pdf=assets/pdfs/ortodontia/ORTODONTIA1.pdf&title=Ortodontia - Material Complementar" class="material-btn view">Visualizar</a>
+                                <a href="pdf-viewer.html?pdf=assets/pdfs/ortodontia/ORTODONTIA1.pdf&title=Ortodontia - Material Complementar&return=especialidades.html&collection=ortodontia&index=5" class="material-btn view">Visualizar</a>
                                 <a href="assets/pdfs/ortodontia/ORTODONTIA1.pdf" download class="material-btn download">Download</a>
                             </div>
                         </div>
@@ -323,7 +537,7 @@
                         <div class="material-item">
                             <span class="material-title">Periodontia - Nova Classificação Completa</span>
                             <div class="material-actions">
-                                <a href="pdf-viewer.html?pdf=assets/pdfs/periodontia/Periodontia-CompletoNovaClassificação.pdf&title=Periodontia - Nova Classificação Completa" class="material-btn view">Visualizar</a>
+                                <a href="pdf-viewer.html?pdf=assets/pdfs/periodontia/Periodontia-CompletoNovaClassificação.pdf&title=Periodontia - Nova Classificação Completa&return=especialidades.html&collection=periodontia&index=0" class="material-btn view">Visualizar</a>
                                 <a href="assets/pdfs/periodontia/Periodontia-CompletoNovaClassificação.pdf" download class="material-btn download">Download</a>
                             </div>
                         </div>
@@ -344,24 +558,24 @@
                 <div class="specialty-content">
                     <p>A Prótese Dentária é a especialidade que tem como objetivo a reconstrução dos dentes parcialmente destruídos ou a reposição de dentes ausentes visando à manutenção das funções do sistema estomatognático, proporcionando ao paciente a função, a saúde, o conforto e a estética.</p>
                     
-                    <p>Esta especialidade abrange diferentes modalidades, como próteses fixas, removíveis, totais e sobre implantes, cada uma com suas indicações específicas e técnicas de confecção.</p>
+                    <p>O protesista trabalha com diversos tipos de próteses, como próteses fixas, removíveis, totais e sobre implantes, utilizando diferentes materiais e técnicas para devolver a função mastigatória e a estética ao paciente.</p>
                     
                     <div class="materials-list">
                         <h3>Materiais Disponíveis</h3>
                         
                         <div class="material-item">
-                            <span class="material-title">Prótese Parcial Removível</span>
+                            <span class="material-title">Prótese - Conceitos Fundamentais</span>
                             <div class="material-actions">
-                                <a href="pdf-viewer.html?pdf=assets/pdfs/protese/PÓTESEPARCIALREMOVIVEL.pdf&title=Prótese Parcial Removível" class="material-btn view">Visualizar</a>
-                                <a href="assets/pdfs/protese/PÓTESEPARCIALREMOVIVEL.pdf" download class="material-btn download">Download</a>
+                                <a href="pdf-viewer.html?pdf=assets/pdfs/protese/protese1.pdf&title=Prótese - Conceitos Fundamentais&return=especialidades.html&collection=protese&index=0" class="material-btn view">Visualizar</a>
+                                <a href="assets/pdfs/protese/protese1.pdf" download class="material-btn download">Download</a>
                             </div>
                         </div>
                         
                         <div class="material-item">
-                            <span class="material-title">Prótese - Conceitos Fundamentais</span>
+                            <span class="material-title">Prótese Parcial Removível</span>
                             <div class="material-actions">
-                                <a href="pdf-viewer.html?pdf=assets/pdfs/protese/protese1.pdf&title=Prótese - Conceitos Fundamentais" class="material-btn view">Visualizar</a>
-                                <a href="assets/pdfs/protese/protese1.pdf" download class="material-btn download">Download</a>
+                                <a href="pdf-viewer.html?pdf=assets/pdfs/protese/PÓTESEPARCIALREMOVIVEL.pdf&title=Prótese Parcial Removível&return=especialidades.html&collection=protese&index=1" class="material-btn view">Visualizar</a>
+                                <a href="assets/pdfs/protese/PÓTESEPARCIALREMOVIVEL.pdf" download class="material-btn download">Download</a>
                             </div>
                         </div>
                     </div>
@@ -379,49 +593,49 @@
                     <h2>Anestesiologia</h2>
                 </div>
                 <div class="specialty-content">
-                    <p>A Anestesiologia em Odontologia é a área que estuda os mecanismos de controle da dor durante os procedimentos odontológicos. Envolve o conhecimento profundo da anatomia da cabeça e pescoço, farmacologia dos anestésicos locais e técnicas de bloqueio nervoso.</p>
+                    <p>A Anestesiologia em Odontologia é uma área fundamental que estuda os mecanismos de controle da dor durante os procedimentos odontológicos. Envolve o conhecimento profundo da anatomia da cabeça e pescoço, farmacologia dos anestésicos locais e técnicas de administração.</p>
                     
-                    <p>O domínio das técnicas anestésicas é fundamental para garantir o conforto do paciente e permitir a realização segura e eficaz dos procedimentos odontológicos, minimizando a dor e a ansiedade.</p>
+                    <p>O domínio das técnicas anestésicas é essencial para garantir o conforto do paciente e permitir a realização segura e eficaz dos procedimentos odontológicos, minimizando a dor e a ansiedade.</p>
                     
                     <div class="materials-list">
                         <h3>Materiais Disponíveis</h3>
                         
                         <div class="material-item">
-                            <span class="material-title">Anestesia - Considerações Anatômicas</span>
+                            <span class="material-title">Considerações Anatômicas</span>
                             <div class="material-actions">
-                                <a href="pdf-viewer.html?pdf=assets/pdfs/anestesiologia/ANESTESIA-CONSIDERAÇÕESANATÔMICAS(1).pdf&title=Anestesia - Considerações Anatômicas" class="material-btn view">Visualizar</a>
+                                <a href="pdf-viewer.html?pdf=assets/pdfs/anestesiologia/ANESTESIA-CONSIDERAÇÕESANATÔMICAS(1).pdf&title=Considerações Anatômicas&return=especialidades.html&collection=anestesiologia&index=0" class="material-btn view">Visualizar</a>
                                 <a href="assets/pdfs/anestesiologia/ANESTESIA-CONSIDERAÇÕESANATÔMICAS(1).pdf" download class="material-btn download">Download</a>
                             </div>
                         </div>
                         
                         <div class="material-item">
-                            <span class="material-title">Anestesia - Técnicas e Manejos</span>
+                            <span class="material-title">Técnicas e Manejos</span>
                             <div class="material-actions">
-                                <a href="pdf-viewer.html?pdf=assets/pdfs/anestesiologia/ANESTESIA-TÉCNICASEMANEJOS.pdf&title=Anestesia - Técnicas e Manejos" class="material-btn view">Visualizar</a>
+                                <a href="pdf-viewer.html?pdf=assets/pdfs/anestesiologia/ANESTESIA-TÉCNICASEMANEJOS.pdf&title=Técnicas e Manejos&return=especialidades.html&collection=anestesiologia&index=1" class="material-btn view">Visualizar</a>
                                 <a href="assets/pdfs/anestesiologia/ANESTESIA-TÉCNICASEMANEJOS.pdf" download class="material-btn download">Download</a>
                             </div>
                         </div>
                         
                         <div class="material-item">
-                            <span class="material-title">Anestesia - Material Completo</span>
+                            <span class="material-title">Anestesia - Parte 1</span>
                             <div class="material-actions">
-                                <a href="pdf-viewer.html?pdf=assets/pdfs/anestesiologia/anestesia1.pdf&title=Anestesia - Material Completo" class="material-btn view">Visualizar</a>
+                                <a href="pdf-viewer.html?pdf=assets/pdfs/anestesiologia/anestesia1.pdf&title=Anestesia - Parte 1&return=especialidades.html&collection=anestesiologia&index=2" class="material-btn view">Visualizar</a>
                                 <a href="assets/pdfs/anestesiologia/anestesia1.pdf" download class="material-btn download">Download</a>
                             </div>
                         </div>
                         
                         <div class="material-item">
-                            <span class="material-title">Anestesia - Técnicas Específicas</span>
+                            <span class="material-title">Anestesia - Parte 2</span>
                             <div class="material-actions">
-                                <a href="pdf-viewer.html?pdf=assets/pdfs/anestesiologia/anestesia2.pdf&title=Anestesia - Técnicas Específicas" class="material-btn view">Visualizar</a>
+                                <a href="pdf-viewer.html?pdf=assets/pdfs/anestesiologia/anestesia2.pdf&title=Anestesia - Parte 2&return=especialidades.html&collection=anestesiologia&index=3" class="material-btn view">Visualizar</a>
                                 <a href="assets/pdfs/anestesiologia/anestesia2.pdf" download class="material-btn download">Download</a>
                             </div>
                         </div>
                         
                         <div class="material-item">
-                            <span class="material-title">Anestesia - Complicações e Emergências</span>
+                            <span class="material-title">Anestesia - Parte 3</span>
                             <div class="material-actions">
-                                <a href="pdf-viewer.html?pdf=assets/pdfs/anestesiologia/anestesia3.pdf&title=Anestesia - Complicações e Emergências" class="material-btn view">Visualizar</a>
+                                <a href="pdf-viewer.html?pdf=assets/pdfs/anestesiologia/anestesia3.pdf&title=Anestesia - Parte 3&return=especialidades.html&collection=anestesiologia&index=4" class="material-btn view">Visualizar</a>
                                 <a href="assets/pdfs/anestesiologia/anestesia3.pdf" download class="material-btn download">Download</a>
                             </div>
                         </div>
@@ -432,336 +646,8 @@
                 </div>
             </div>
             
-            <div class="ornament"></div>
+            <!-- Outras especialidades seriam adicionadas aqui -->
             
-            <!-- Cariologia -->
-            <div class="specialty-card" id="cariologia">
-                <div class="specialty-header">
-                    <h2>Cariologia</h2>
-                </div>
-                <div class="specialty-content">
-                    <p>A Cariologia é a área da Odontologia que estuda a cárie dentária, sua etiologia, patogênese, prevenção e tratamento. Abrange desde os aspectos microbiológicos e bioquímicos até as manifestações clínicas e estratégias de controle da doença.</p>
-                    
-                    <p>O conhecimento em Cariologia é essencial para o desenvolvimento de abordagens preventivas e terapêuticas baseadas em evidências, visando a manutenção da saúde bucal e a preservação da estrutura dentária.</p>
-                    
-                    <div class="materials-list">
-                        <h3>Materiais Disponíveis</h3>
-                        
-                        <div class="material-item">
-                            <span class="material-title">Cariologia - Evolução da Cárie</span>
-                            <div class="material-actions">
-                                <a href="pdf-viewer.html?pdf=assets/pdfs/cariologia/CARIOLOGIA-Evoluçãodacárie.pdf&title=Cariologia - Evolução da Cárie" class="material-btn view">Visualizar</a>
-                                <a href="assets/pdfs/cariologia/CARIOLOGIA-Evoluçãodacárie.pdf" download class="material-btn download">Download</a>
-                            </div>
-                        </div>
-                        
-                        <div class="material-item">
-                            <span class="material-title">Cariologia - Material Completo</span>
-                            <div class="material-actions">
-                                <a href="pdf-viewer.html?pdf=assets/pdfs/cariologia/cariologia.pdf&title=Cariologia - Material Completo" class="material-btn view">Visualizar</a>
-                                <a href="assets/pdfs/cariologia/cariologia.pdf" download class="material-btn download">Download</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="specialty-footer">
-                    <a href="#" class="nav-btn">Ver Todos os Materiais de Cariologia</a>
-                </div>
-            </div>
-            
-            <div class="ornament"></div>
-            
-            <!-- Dentística -->
-            <div class="specialty-card" id="dentistica">
-                <div class="specialty-header">
-                    <h2>Dentística</h2>
-                </div>
-                <div class="specialty-content">
-                    <p>A Dentística é a especialidade odontológica que estuda e aplica de forma integrada o conjunto de procedimentos operatórios visando à preservação e à recuperação da forma, função e estética dos elementos dentários.</p>
-                    
-                    <p>Esta área abrange desde técnicas conservadoras de tratamento até procedimentos restauradores mais complexos, utilizando diversos materiais e técnicas para devolver a integridade estrutural, funcional e estética dos dentes.</p>
-                    
-                    <div class="materials-list">
-                        <h3>Materiais Disponíveis</h3>
-                        
-                        <div class="material-item">
-                            <span class="material-title">Dentística Completo</span>
-                            <div class="material-actions">
-                                <a href="pdf-viewer.html?pdf=assets/pdfs/dentistica/Dentisticacompleto.pdf&title=Dentística Completo" class="material-btn view">Visualizar</a>
-                                <a href="assets/pdfs/dentistica/Dentisticacompleto.pdf" download class="material-btn download">Download</a>
-                            </div>
-                        </div>
-                        
-                        <div class="material-item">
-                            <span class="material-title">Dentística - Material Complementar</span>
-                            <div class="material-actions">
-                                <a href="pdf-viewer.html?pdf=assets/pdfs/dentistica/Dentisticacompleto1.pdf&title=Dentística - Material Complementar" class="material-btn view">Visualizar</a>
-                                <a href="assets/pdfs/dentistica/Dentisticacompleto1.pdf" download class="material-btn download">Download</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="specialty-footer">
-                    <a href="#" class="nav-btn">Ver Todos os Materiais de Dentística</a>
-                </div>
-            </div>
-            
-            <div class="ornament"></div>
-            
-            <!-- Farmacologia -->
-            <div class="specialty-card" id="farmacologia">
-                <div class="specialty-header">
-                    <h2>Farmacologia</h2>
-                </div>
-                <div class="specialty-content">
-                    <p>A Farmacologia aplicada à Odontologia estuda os medicamentos utilizados na prática odontológica, seus mecanismos de ação, efeitos terapêuticos, efeitos adversos, interações medicamentosas e posologia.</p>
-                    
-                    <p>O conhecimento farmacológico é fundamental para o cirurgião-dentista prescrever medicamentos de forma segura e eficaz, considerando as particularidades de cada paciente e as especificidades dos procedimentos odontológicos.</p>
-                    
-                    <div class="materials-list">
-                        <h3>Materiais Disponíveis</h3>
-                        
-                        <div class="material-item">
-                            <span class="material-title">Farmacologia - Material Completo</span>
-                            <div class="material-actions">
-                                <a href="pdf-viewer.html?pdf=assets/pdfs/farmacologia/farmaco.pdf&title=Farmacologia - Material Completo" class="material-btn view">Visualizar</a>
-                                <a href="assets/pdfs/farmacologia/farmaco.pdf" download class="material-btn download">Download</a>
-                            </div>
-                        </div>
-                        
-                        <div class="material-item">
-                            <span class="material-title">Farmacologia - Analgésicos e Anti-inflamatórios</span>
-                            <div class="material-actions">
-                                <a href="pdf-viewer.html?pdf=assets/pdfs/farmacologia/farmaco1.pdf&title=Farmacologia - Analgésicos e Anti-inflamatórios" class="material-btn view">Visualizar</a>
-                                <a href="assets/pdfs/farmacologia/farmaco1.pdf" download class="material-btn download">Download</a>
-                            </div>
-                        </div>
-                        
-                        <div class="material-item">
-                            <span class="material-title">Farmacologia - Antimicrobianos</span>
-                            <div class="material-actions">
-                                <a href="pdf-viewer.html?pdf=assets/pdfs/farmacologia/farmaco2.pdf&title=Farmacologia - Antimicrobianos" class="material-btn view">Visualizar</a>
-                                <a href="assets/pdfs/farmacologia/farmaco2.pdf" download class="material-btn download">Download</a>
-                            </div>
-                        </div>
-                        
-                        <div class="material-item">
-                            <span class="material-title">Farmacologia - Ansiolíticos e Sedativos</span>
-                            <div class="material-actions">
-                                <a href="pdf-viewer.html?pdf=assets/pdfs/farmacologia/farmaco3.pdf&title=Farmacologia - Ansiolíticos e Sedativos" class="material-btn view">Visualizar</a>
-                                <a href="assets/pdfs/farmacologia/farmaco3.pdf" download class="material-btn download">Download</a>
-                            </div>
-                        </div>
-                        
-                        <div class="material-item">
-                            <span class="material-title">Farmacologia - Interações Medicamentosas</span>
-                            <div class="material-actions">
-                                <a href="pdf-viewer.html?pdf=assets/pdfs/farmacologia/farmaco4.pdf&title=Farmacologia - Interações Medicamentosas" class="material-btn view">Visualizar</a>
-                                <a href="assets/pdfs/farmacologia/farmaco4.pdf" download class="material-btn download">Download</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="specialty-footer">
-                    <a href="#" class="nav-btn">Ver Todos os Materiais de Farmacologia</a>
-                </div>
-            </div>
-            
-            <div class="ornament"></div>
-            
-            <!-- Materiais Odontológicos -->
-            <div class="specialty-card" id="materiais">
-                <div class="specialty-header">
-                    <h2>Materiais Odontológicos</h2>
-                </div>
-                <div class="specialty-content">
-                    <p>A área de Materiais Odontológicos estuda as propriedades físicas, químicas, biológicas e mecânicas dos materiais utilizados na prática odontológica, bem como suas aplicações clínicas e técnicas de manipulação.</p>
-                    
-                    <p>O conhecimento aprofundado sobre os materiais odontológicos é essencial para a seleção adequada e o uso correto dos diversos materiais disponíveis, visando resultados clínicos previsíveis e duradouros.</p>
-                    
-                    <div class="materials-list">
-                        <h3>Materiais Disponíveis</h3>
-                        
-                        <div class="material-item">
-                            <span class="material-title">Materiais Restauradores</span>
-                            <div class="material-actions">
-                                <a href="pdf-viewer.html?pdf=assets/pdfs/materiais/MATERIAISODONTOLOGICOS-MATERIAISRESTAURADORES.pdf&title=Materiais Restauradores" class="material-btn view">Visualizar</a>
-                                <a href="assets/pdfs/materiais/MATERIAISODONTOLOGICOS-MATERIAISRESTAURADORES.pdf" download class="material-btn download">Download</a>
-                            </div>
-                        </div>
-                        
-                        <div class="material-item">
-                            <span class="material-title">Materiais Restauradores - Complementar</span>
-                            <div class="material-actions">
-                                <a href="pdf-viewer.html?pdf=assets/pdfs/materiais/MATERIAISODONTOLOGICOS-MATERIAISRESTAURADORES1.pdf&title=Materiais Restauradores - Complementar" class="material-btn view">Visualizar</a>
-                                <a href="assets/pdfs/materiais/MATERIAISODONTOLOGICOS-MATERIAISRESTAURADORES1.pdf" download class="material-btn download">Download</a>
-                            </div>
-                        </div>
-                        
-                        <div class="material-item">
-                            <span class="material-title">Novos Materiais</span>
-                            <div class="material-actions">
-                                <a href="pdf-viewer.html?pdf=assets/pdfs/materiais/NovoMaterial.pdf&title=Novos Materiais" class="material-btn view">Visualizar</a>
-                                <a href="assets/pdfs/materiais/NovoMaterial.pdf" download class="material-btn download">Download</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="specialty-footer">
-                    <a href="#" class="nav-btn">Ver Todos os Materiais de Materiais Odontológicos</a>
-                </div>
-            </div>
-            
-            <div class="ornament"></div>
-            
-            <!-- Oclusão -->
-            <div class="specialty-card" id="oclusao">
-                <div class="specialty-header">
-                    <h2>Oclusão</h2>
-                </div>
-                <div class="specialty-content">
-                    <p>A Oclusão é a área da Odontologia que estuda as relações de contato entre os dentes superiores e inferiores durante a função mastigatória e em repouso, bem como sua relação com o sistema estomatognático como um todo.</p>
-                    
-                    <p>O conhecimento dos princípios de oclusão é fundamental para o diagnóstico e tratamento de distúrbios temporomandibulares, planejamento de reabilitações orais e para garantir a estabilidade e longevidade dos tratamentos odontológicos.</p>
-                    
-                    <div class="materials-list">
-                        <h3>Materiais Disponíveis</h3>
-                        
-                        <div class="material-item">
-                            <span class="material-title">Oclusão - Material Completo</span>
-                            <div class="material-actions">
-                                <a href="pdf-viewer.html?pdf=assets/pdfs/oclusao/oclusao.pdf&title=Oclusão - Material Completo" class="material-btn view">Visualizar</a>
-                                <a href="assets/pdfs/oclusao/oclusao.pdf" download class="material-btn download">Download</a>
-                            </div>
-                        </div>
-                        
-                        <div class="material-item">
-                            <span class="material-title">Oclusão - Princípios Básicos</span>
-                            <div class="material-actions">
-                                <a href="pdf-viewer.html?pdf=assets/pdfs/oclusao/oclusao1.pdf&title=Oclusão - Princípios Básicos" class="material-btn view">Visualizar</a>
-                                <a href="assets/pdfs/oclusao/oclusao1.pdf" download class="material-btn download">Download</a>
-                            </div>
-                        </div>
-                        
-                        <div class="material-item">
-                            <span class="material-title">Oclusão - Distúrbios Temporomandibulares</span>
-                            <div class="material-actions">
-                                <a href="pdf-viewer.html?pdf=assets/pdfs/oclusao/oclusao2.pdf&title=Oclusão - Distúrbios Temporomandibulares" class="material-btn view">Visualizar</a>
-                                <a href="assets/pdfs/oclusao/oclusao2.pdf" download class="material-btn download">Download</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="specialty-footer">
-                    <a href="#" class="nav-btn">Ver Todos os Materiais de Oclusão</a>
-                </div>
-            </div>
-            
-            <div class="ornament"></div>
-            
-            <!-- Odontologia Legal -->
-            <div class="specialty-card" id="odontolegal">
-                <div class="specialty-header">
-                    <h2>Odontologia Legal</h2>
-                </div>
-                <div class="specialty-content">
-                    <p>A Odontologia Legal é a especialidade que aplica os conhecimentos odontológicos a serviço da Justiça, contribuindo para a identificação humana, perícias em foro civil, criminal e trabalhista, e na elaboração de documentos legais.</p>
-                    
-                    <p>Esta área é fundamental para a resolução de questões judiciais que envolvem a Odontologia, como identificação de vítimas em desastres em massa, estimativa de idade, análise de marcas de mordida e avaliação de danos odontológicos para fins de indenização.</p>
-                    
-                    <div class="materials-list">
-                        <h3>Materiais Disponíveis</h3>
-                        
-                        <div class="material-item">
-                            <span class="material-title">Odontologia Legal - Material Básico</span>
-                            <div class="material-actions">
-                                <a href="pdf-viewer.html?pdf=assets/pdfs/odontolegal/odontolegal.pdf&title=Odontologia Legal - Material Básico" class="material-btn view">Visualizar</a>
-                                <a href="assets/pdfs/odontolegal/odontolegal.pdf" download class="material-btn download">Download</a>
-                            </div>
-                        </div>
-                        
-                        <div class="material-item">
-                            <span class="material-title">Odontologia Legal - Identificação Humana</span>
-                            <div class="material-actions">
-                                <a href="pdf-viewer.html?pdf=assets/pdfs/odontolegal/odontolegal1.pdf&title=Odontologia Legal - Identificação Humana" class="material-btn view">Visualizar</a>
-                                <a href="assets/pdfs/odontolegal/odontolegal1.pdf" download class="material-btn download">Download</a>
-                            </div>
-                        </div>
-                        
-                        <div class="material-item">
-                            <span class="material-title">Odontologia Legal - Perícias e Documentação</span>
-                            <div class="material-actions">
-                                <a href="pdf-viewer.html?pdf=assets/pdfs/odontolegal/odontolegal2.pdf&title=Odontologia Legal - Perícias e Documentação" class="material-btn view">Visualizar</a>
-                                <a href="assets/pdfs/odontolegal/odontolegal2.pdf" download class="material-btn download">Download</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="specialty-footer">
-                    <a href="#" class="nav-btn">Ver Todos os Materiais de Odontologia Legal</a>
-                </div>
-            </div>
-            
-            <div class="ornament"></div>
-            
-            <!-- Outros Materiais -->
-            <div class="specialty-card" id="outros">
-                <div class="specialty-header">
-                    <h2>Outros Materiais</h2>
-                </div>
-                <div class="specialty-content">
-                    <p>Esta seção reúne materiais complementares importantes para a formação em Odontologia, abrangendo temas como instrumentais odontológicos, técnicas de isolamento, procedimentos clínicos específicos e outros conteúdos relevantes que não se enquadram nas especialidades tradicionais.</p>
-                    
-                    <p>Estes materiais são essenciais para o desenvolvimento de habilidades técnicas e conhecimentos práticos necessários para a atuação clínica do cirurgião-dentista.</p>
-                    
-                    <div class="materials-list">
-                        <h3>Materiais Disponíveis</h3>
-                        
-                        <div class="material-item">
-                            <span class="material-title">Instrumentais Odontológicos</span>
-                            <div class="material-actions">
-                                <a href="pdf-viewer.html?pdf=assets/pdfs/outros/instrumentais.pdf&title=Instrumentais Odontológicos" class="material-btn view">Visualizar</a>
-                                <a href="assets/pdfs/outros/instrumentais.pdf" download class="material-btn download">Download</a>
-                            </div>
-                        </div>
-                        
-                        <div class="material-item">
-                            <span class="material-title">Técnicas de Isolamento</span>
-                            <div class="material-actions">
-                                <a href="pdf-viewer.html?pdf=assets/pdfs/outros/isolamentos.pdf&title=Técnicas de Isolamento" class="material-btn view">Visualizar</a>
-                                <a href="assets/pdfs/outros/isolamentos.pdf" download class="material-btn download">Download</a>
-                            </div>
-                        </div>
-                        
-                        <div class="material-item">
-                            <span class="material-title">Lesões Graves</span>
-                            <div class="material-actions">
-                                <a href="pdf-viewer.html?pdf=assets/pdfs/outros/graves.pdf&title=Lesões Graves" class="material-btn view">Visualizar</a>
-                                <a href="assets/pdfs/outros/graves.pdf" download class="material-btn download">Download</a>
-                            </div>
-                        </div>
-                        
-                        <div class="material-item">
-                            <span class="material-title">Técnicas de Obturação</span>
-                            <div class="material-actions">
-                                <a href="pdf-viewer.html?pdf=assets/pdfs/outros/obturação.pdf&title=Técnicas de Obturação" class="material-btn view">Visualizar</a>
-                                <a href="assets/pdfs/outros/obturação.pdf" download class="material-btn download">Download</a>
-                            </div>
-                        </div>
-                        
-                        <div class="material-item">
-                            <span class="material-title">Material Completo - Compilação</span>
-                            <div class="material-actions">
-                                <a href="pdf-viewer.html?pdf=assets/pdfs/outros/completa.pdf&title=Material Completo - Compilação" class="material-btn view">Visualizar</a>
-                                <a href="assets/pdfs/outros/completa.pdf" download class="material-btn download">Download</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="specialty-footer">
-                    <a href="#" class="nav-btn">Ver Todos os Materiais Complementares</a>
-                </div>
-            </div>
         </div>
     </section>
 
@@ -776,7 +662,7 @@
         </div>
         <div class="ai-chat-body" id="ai-chat-body">
             <div style="background-color: #f0f0f0; padding: 10px; border-radius: 10px; margin-bottom: 10px;">
-                <p><strong>DON_FBBR:</strong> Olá! Sou o DON_FBBR, sua assistente de estudos em Odontologia. Como posso ajudar você a encontrar materiais sobre especialidades odontológicas?</p>
+                <p><strong>DON_FBBR:</strong> Olá! Sou o DON_FBBR, sua assistente de estudos em Odontologia. Como posso ajudar você hoje?</p>
             </div>
         </div>
         <div class="ai-chat-input">
@@ -821,6 +707,7 @@
     </footer>
 
     <!-- Scripts -->
+    <script src="assets/js/filter.js"></script>
     <script>
         // Menu Mobile Toggle
         const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
@@ -875,7 +762,7 @@
                     botMessageDiv.style.marginBottom = '10px';
                     
                     // Resposta simulada baseada em palavras-chave
-                    let response = "Desculpe, não entendi sua pergunta sobre especialidades odontológicas. Pode reformular?";
+                    let response = "Desculpe, não entendi sua pergunta. Pode reformular?";
                     
                     if (message.toLowerCase().includes('endodontia')) {
                         response = "A Endodontia é a especialidade que estuda a polpa dentária e os tecidos periapicais. Temos 5 materiais disponíveis sobre este tema, incluindo anatomia interna dos dentes e técnicas de tratamento. Você pode acessá-los na seção de Endodontia.";
@@ -888,7 +775,9 @@
                     } else if (message.toLowerCase().includes('anestesia') || message.toLowerCase().includes('anestesiologia')) {
                         response = "A Anestesiologia em Odontologia estuda os mecanismos de controle da dor. Temos 5 materiais disponíveis sobre considerações anatômicas, técnicas e manejos, complicações e emergências. Você pode acessá-los na seção de Anestesiologia.";
                     } else if (message.toLowerCase().includes('especialidade')) {
-                        response = "O FBBR_Odonto oferece materiais para diversas especialidades odontológicas, como Endodontia, Ortodontia, Periodontia, Prótese Dentária, Anestesiologia, Cariologia, Dentística, Farmacologia, Materiais Odontológicos, Oclusão e Odontologia Legal. Qual delas você gostaria de explorar?";
+                        response = "O FBBR_Odonto oferece materiais para diversas especialidades odontológicas, como Endodontia, Ortodontia, Periodontia, Prótese Dentária e Anestesiologia. Navegue pela página de Especialidades para explorar todos os materiais disponíveis.";
+                    } else if (message.toLowerCase().includes('material') || message.toLowerCase().includes('pdf')) {
+                        response = "Temos diversos materiais em formato PDF organizados por especialidade. Você pode visualizá-los diretamente no navegador ou baixá-los para estudo offline. Use o filtro avançado para encontrar materiais específicos.";
                     }
                     
                     botMessageDiv.innerHTML = `<p><strong>DON_FBBR:</strong> ${response}</p>`;
@@ -898,7 +787,7 @@
                     aiChatBody.scrollTop = aiChatBody.scrollHeight;
                 }, 1000);
                 
-                // Rolar para o final da conversa
+                // Rolar para o final da conversa após adicionar a mensagem do usuário
                 aiChatBody.scrollTop = aiChatBody.scrollHeight;
             }
         }

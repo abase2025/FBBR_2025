@@ -20,6 +20,8 @@
             background-color: var(--primary-color);
             color: white;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            flex-wrap: wrap;
+            gap: 10px;
         }
         
         .pdf-viewer-title {
@@ -32,6 +34,8 @@
         .pdf-viewer-actions {
             display: flex;
             gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
         }
         
         .pdf-viewer-btn {
@@ -89,6 +93,17 @@
             color: white;
         }
         
+        .nav-btn {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+        
+        .nav-btn.disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+            opacity: 0.7;
+        }
+        
         .pdf-viewer-content {
             height: calc(100vh - 80px);
             width: 100%;
@@ -99,6 +114,29 @@
             height: 100%;
             border: none;
         }
+        
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .pdf-viewer-header {
+                flex-direction: column;
+                padding: 1rem;
+            }
+            
+            .pdf-viewer-title {
+                font-size: 1.2rem;
+                margin-bottom: 1rem;
+            }
+            
+            .pdf-viewer-actions {
+                width: 100%;
+                justify-content: space-between;
+            }
+            
+            .pdf-viewer-btn {
+                padding: 0.6rem 1rem;
+                font-size: 0.9rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -108,9 +146,17 @@
                 <i class="fas fa-arrow-left"></i> Voltar
             </a>
             <h1 class="pdf-viewer-title" id="pdf-title">Visualizando PDF</h1>
-            <a href="#" class="pdf-viewer-btn download-btn" id="download-btn" download>
-                <i class="fas fa-download"></i> Baixar PDF
-            </a>
+            <div class="pdf-viewer-actions">
+                <a href="#" class="pdf-viewer-btn nav-btn" id="prev-btn">
+                    <i class="fas fa-chevron-left"></i> Anterior
+                </a>
+                <a href="#" class="pdf-viewer-btn nav-btn" id="next-btn">
+                    Próximo <i class="fas fa-chevron-right"></i>
+                </a>
+                <a href="#" class="pdf-viewer-btn download-btn" id="download-btn" download>
+                    <i class="fas fa-download"></i> Baixar PDF
+                </a>
+            </div>
         </div>
         <div class="pdf-viewer-content">
             <iframe id="pdf-iframe" class="pdf-viewer-iframe" src=""></iframe>
@@ -124,6 +170,8 @@
             const pdfPath = urlParams.get('pdf');
             const pdfTitle = urlParams.get('title') || 'Documento PDF';
             const returnUrl = urlParams.get('return') || 'especialidades.html';
+            const collection = urlParams.get('collection') || '';
+            const currentIndex = parseInt(urlParams.get('index') || '0');
             
             // Definir título
             document.getElementById('pdf-title').textContent = pdfTitle;
@@ -151,6 +199,218 @@
                 // Extrair nome do arquivo do caminho
                 const fileName = pdfPath.split('/').pop();
                 downloadBtn.setAttribute('download', fileName);
+            }
+            
+            // Configurar navegação entre PDFs
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+            
+            // Definir coleções de PDFs por especialidade
+            const collections = {
+                'endodontia': [
+                    {
+                        path: 'assets/pdfs/endodontia/Endodontia-Introduçãoeanatomiainternadosdentes.pdf',
+                        title: 'Introdução e Anatomia Interna dos Dentes'
+                    },
+                    {
+                        path: 'assets/pdfs/endodontia/endondotia.pdf',
+                        title: 'Endodontia Completo'
+                    },
+                    {
+                        path: 'assets/pdfs/endodontia/endondotia1.pdf',
+                        title: 'Técnicas Endodônticas - Parte 1'
+                    },
+                    {
+                        path: 'assets/pdfs/endodontia/endondotia2.pdf',
+                        title: 'Técnicas Endodônticas - Parte 2'
+                    },
+                    {
+                        path: 'assets/pdfs/endodontia/endondotia3.pdf',
+                        title: 'Técnicas Endodônticas - Parte 3'
+                    }
+                ],
+                'ortodontia': [
+                    {
+                        path: 'assets/pdfs/ortodontia/ORTODONTIA.pdf',
+                        title: 'Ortodontia Completo'
+                    },
+                    {
+                        path: 'assets/pdfs/ortodontia/ORTODONTIA-Classificaçãodasmásoclusões.pdf',
+                        title: 'Classificação das Más Oclusões'
+                    },
+                    {
+                        path: 'assets/pdfs/ortodontia/ORTODONTIA-Desenvolvimentodadentição.pdf',
+                        title: 'Desenvolvimento da Dentição'
+                    },
+                    {
+                        path: 'assets/pdfs/ortodontia/ORTODONTIA-Etiologiadasmásoclusões.pdf',
+                        title: 'Etiologia das Más Oclusões'
+                    },
+                    {
+                        path: 'assets/pdfs/ortodontia/ORTODONTIA-MordidaabertaeMantenedordeespaço.pdf',
+                        title: 'Mordida Aberta e Mantenedor de Espaço'
+                    },
+                    {
+                        path: 'assets/pdfs/ortodontia/ORTODONTIA1.pdf',
+                        title: 'Ortodontia - Material Complementar'
+                    }
+                ],
+                'periodontia': [
+                    {
+                        path: 'assets/pdfs/periodontia/Periodontia-CompletoNovaClassificação.pdf',
+                        title: 'Periodontia - Nova Classificação Completa'
+                    }
+                ],
+                'protese': [
+                    {
+                        path: 'assets/pdfs/protese/protese1.pdf',
+                        title: 'Prótese - Conceitos Fundamentais'
+                    },
+                    {
+                        path: 'assets/pdfs/protese/PÓTESEPARCIALREMOVIVEL.pdf',
+                        title: 'Prótese Parcial Removível'
+                    }
+                ],
+                'anestesiologia': [
+                    {
+                        path: 'assets/pdfs/anestesiologia/ANESTESIA-CONSIDERAÇÕESANATÔMICAS(1).pdf',
+                        title: 'Considerações Anatômicas'
+                    },
+                    {
+                        path: 'assets/pdfs/anestesiologia/ANESTESIA-TÉCNICASEMANEJOS.pdf',
+                        title: 'Técnicas e Manejos'
+                    },
+                    {
+                        path: 'assets/pdfs/anestesiologia/anestesia1.pdf',
+                        title: 'Anestesia - Parte 1'
+                    },
+                    {
+                        path: 'assets/pdfs/anestesiologia/anestesia2.pdf',
+                        title: 'Anestesia - Parte 2'
+                    },
+                    {
+                        path: 'assets/pdfs/anestesiologia/anestesia3.pdf',
+                        title: 'Anestesia - Parte 3'
+                    }
+                ],
+                'cariologia': [
+                    {
+                        path: 'assets/pdfs/cariologia/cariologia.pdf',
+                        title: 'Cariologia'
+                    },
+                    {
+                        path: 'assets/pdfs/cariologia/CARIOLOGIA-Evoluçãodacárie.pdf',
+                        title: 'Evolução da Cárie'
+                    }
+                ],
+                'dentistica': [
+                    {
+                        path: 'assets/pdfs/dentistica/Dentisticacompleto.pdf',
+                        title: 'Dentística Completo'
+                    },
+                    {
+                        path: 'assets/pdfs/dentistica/Dentisticacompleto1.pdf',
+                        title: 'Dentística Complementar'
+                    }
+                ],
+                'farmacologia': [
+                    {
+                        path: 'assets/pdfs/farmacologia/farmaco.pdf',
+                        title: 'Farmacologia'
+                    },
+                    {
+                        path: 'assets/pdfs/farmacologia/farmaco1.pdf',
+                        title: 'Farmacologia - Parte 1'
+                    },
+                    {
+                        path: 'assets/pdfs/farmacologia/farmaco2.pdf',
+                        title: 'Farmacologia - Parte 2'
+                    },
+                    {
+                        path: 'assets/pdfs/farmacologia/farmaco3.pdf',
+                        title: 'Farmacologia - Parte 3'
+                    },
+                    {
+                        path: 'assets/pdfs/farmacologia/farmaco4.pdf',
+                        title: 'Farmacologia - Parte 4'
+                    }
+                ],
+                'materiais': [
+                    {
+                        path: 'assets/pdfs/materiais/MATERIAISODONTOLOGICOS-MATERIAISRESTAURADORES.pdf',
+                        title: 'Materiais Restauradores'
+                    },
+                    {
+                        path: 'assets/pdfs/materiais/MATERIAISODONTOLOGICOS-MATERIAISRESTAURADORES1.pdf',
+                        title: 'Materiais Restauradores - Complementar'
+                    },
+                    {
+                        path: 'assets/pdfs/materiais/NovoMaterial.pdf',
+                        title: 'Novo Material'
+                    }
+                ],
+                'oclusao': [
+                    {
+                        path: 'assets/pdfs/oclusao/oclusao.pdf',
+                        title: 'Oclusão'
+                    },
+                    {
+                        path: 'assets/pdfs/oclusao/oclusao1.pdf',
+                        title: 'Oclusão - Parte 1'
+                    },
+                    {
+                        path: 'assets/pdfs/oclusao/oclusao2.pdf',
+                        title: 'Oclusão - Parte 2'
+                    }
+                ],
+                'odontolegal': [
+                    {
+                        path: 'assets/pdfs/odontolegal/odontolegal.pdf',
+                        title: 'Odontologia Legal'
+                    },
+                    {
+                        path: 'assets/pdfs/odontolegal/odontolegal1.pdf',
+                        title: 'Odontologia Legal - Parte 1'
+                    },
+                    {
+                        path: 'assets/pdfs/odontolegal/odontolegal2.pdf',
+                        title: 'Odontologia Legal - Parte 2'
+                    }
+                ]
+            };
+            
+            // Verificar se a coleção existe e tem múltiplos documentos
+            if (collection && collections[collection] && collections[collection].length > 1) {
+                // Habilitar/desabilitar botões de navegação
+                if (currentIndex <= 0) {
+                    prevBtn.classList.add('disabled');
+                    prevBtn.style.pointerEvents = 'none';
+                } else {
+                    prevBtn.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        if (currentIndex > 0) {
+                            const prevDoc = collections[collection][currentIndex - 1];
+                            window.location.href = `pdf-viewer.html?pdf=${prevDoc.path}&title=${encodeURIComponent(prevDoc.title)}&return=${returnUrl}&collection=${collection}&index=${currentIndex - 1}`;
+                        }
+                    });
+                }
+                
+                if (currentIndex >= collections[collection].length - 1) {
+                    nextBtn.classList.add('disabled');
+                    nextBtn.style.pointerEvents = 'none';
+                } else {
+                    nextBtn.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        if (currentIndex < collections[collection].length - 1) {
+                            const nextDoc = collections[collection][currentIndex + 1];
+                            window.location.href = `pdf-viewer.html?pdf=${nextDoc.path}&title=${encodeURIComponent(nextDoc.title)}&return=${returnUrl}&collection=${collection}&index=${currentIndex + 1}`;
+                        }
+                    });
+                }
+            } else {
+                // Se não houver coleção ou for documento único, esconder botões de navegação
+                prevBtn.style.display = 'none';
+                nextBtn.style.display = 'none';
             }
         });
     </script>
