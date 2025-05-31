@@ -99,58 +99,91 @@
             margin-right: 1rem;
         }
         
-        .faq-section {
+        .team-section {
             margin-top: 3rem;
         }
         
-        .faq-item {
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 2rem;
+        }
+        
+        .team-member {
             background-color: #fff;
             border: 1px solid var(--vintage-border);
             border-radius: 8px;
-            margin-bottom: 1rem;
             overflow: hidden;
-        }
-        
-        .faq-question {
-            padding: 1rem 1.5rem;
-            background-color: #f9f7f0;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-weight: 600;
-            color: var(--primary-color);
+            box-shadow: 0 4px 15px var(--shadow-color);
             transition: all 0.3s ease;
+            text-align: center;
         }
         
-        .faq-question:hover {
-            background-color: #f5f2e8;
+        .team-member:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
         }
         
-        .faq-question i {
-            transition: transform 0.3s ease;
-        }
-        
-        .faq-question.active i {
-            transform: rotate(180deg);
-        }
-        
-        .faq-answer {
-            padding: 0 1.5rem;
-            max-height: 0;
+        .team-member-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            margin: 2rem auto 1rem;
             overflow: hidden;
-            transition: max-height 0.3s ease, padding 0.3s ease;
+            border: 3px solid var(--secondary-color);
         }
         
-        .faq-answer.show {
-            padding: 1rem 1.5rem;
-            max-height: 500px;
+        .team-member-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .team-member-info {
+            padding: 1rem 1.5rem 2rem;
+        }
+        
+        .team-member-name {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .team-member-role {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 1rem;
+        }
+        
+        .team-member-desc {
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        
+        .page-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .page-header h1 {
+            color: var(--primary-color);
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .page-header p {
+            max-width: 800px;
+            margin: 0 auto;
+            color: #666;
         }
         
         .social-links {
             display: flex;
             gap: 15px;
             margin-top: 1.5rem;
+            justify-content: center;
         }
         
         .social-link {
@@ -198,36 +231,38 @@
     <section class="hero">
         <div class="container">
             <h1>Entre em Contato</h1>
-            <p>Tire suas dúvidas, envie sugestões ou entre em contato para parcerias e colaborações.</p>
+            <p>Estamos aqui para ajudar! Envie-nos uma mensagem e responderemos o mais breve possível.</p>
         </div>
     </section>
 
     <!-- Conteúdo Principal -->
     <section class="section">
         <div class="container">
-            <div class="section-title">
-                <h2>Fale Conosco</h2>
+            <div class="page-header">
+                <h1>Entre em Contato</h1>
+                <p>Estamos aqui para ajudar! Envie-nos uma mensagem e responderemos o mais breve possível.</p>
             </div>
             
             <div class="contact-container">
                 <div class="contact-form">
-                    <h3>Envie sua Mensagem</h3>
+                    <h3>Envie uma Mensagem</h3>
+                    <p>Preencha o formulário abaixo e entraremos em contato o mais breve possível.</p>
                     <form id="contact-form">
                         <div class="form-group">
                             <label for="name">Nome Completo</label>
-                            <input type="text" id="name" class="form-control" required>
+                            <input type="text" id="name" class="form-control" placeholder="Digite seu nome completo" required>
                         </div>
                         <div class="form-group">
-                            <label for="email">E-mail</label>
-                            <input type="email" id="email" class="form-control" required>
+                            <label for="email">Email</label>
+                            <input type="email" id="email" class="form-control" placeholder="Digite seu email" required>
                         </div>
                         <div class="form-group">
                             <label for="subject">Assunto</label>
-                            <input type="text" id="subject" class="form-control" required>
+                            <input type="text" id="subject" class="form-control" placeholder="Digite o assunto" required>
                         </div>
                         <div class="form-group">
                             <label for="message">Mensagem</label>
-                            <textarea id="message" class="form-control" required></textarea>
+                            <textarea id="message" class="form-control" placeholder="Digite sua mensagem" required></textarea>
                         </div>
                         <button type="submit" class="btn">Enviar Mensagem</button>
                     </form>
@@ -235,25 +270,41 @@
                 
                 <div class="contact-info">
                     <h3>Informações de Contato</h3>
-                    <p>Entre em contato conosco para dúvidas, sugestões ou parcerias. Estamos sempre buscando melhorar nossa plataforma e oferecer o melhor conteúdo para seus estudos em Odontologia.</p>
+                    <p>Você pode nos contatar através dos seguintes meios:</p>
                     
                     <div class="contact-info-item">
-                        <i class="fas fa-envelope"></i>
-                        <span>contato@fbbrodonto.com.br</span>
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <strong>Endereço</strong><br>
+                            Av. Alberto Passos, 294 - Centro, Cruz das Almas - BA, 44380-000
+                        </div>
                     </div>
                     
                     <div class="contact-info-item">
                         <i class="fas fa-phone"></i>
-                        <span>(XX) XXXX-XXXX</span>
+                        <div>
+                            <strong>Telefone</strong><br>
+                            (75) 3017-0879<br>
+                            (75) 98823-4776
+                        </div>
                     </div>
                     
                     <div class="contact-info-item">
-                        <i class="fas fa-map-marker-alt"></i>
-                        <span>Brasil</span>
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <strong>Email</strong><br>
+                            vestibular@atmos.edu.br
+                        </div>
                     </div>
                     
-                    <h4 style="margin-top: 2rem;">Criador</h4>
-                    <p>FBBR_Odonto foi criado por Harrison Costa, com o objetivo de democratizar o acesso ao conhecimento odontológico de qualidade.</p>
+                    <div class="contact-info-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <strong>Horário de Atendimento</strong><br>
+                            Segunda a Sexta: 8h às 18h<br>
+                            Sábado: 8h às 12h
+                        </div>
+                    </div>
                     
                     <div class="social-links">
                         <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
@@ -264,58 +315,54 @@
                 </div>
             </div>
             
-            <div class="faq-section">
+            <div class="team-section">
                 <div class="section-title">
-                    <h2>Perguntas Frequentes</h2>
+                    <h2>Nossa Equipe</h2>
                 </div>
                 
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>Como posso contribuir com materiais para o FBBR_Odonto?</span>
-                        <i class="fas fa-chevron-down"></i>
+                <div class="team-grid">
+                    <div class="team-member">
+                        <div class="team-member-img">
+                            <img src="assets/images/placeholder-person.jpg" alt="Daniella Carvalho">
+                        </div>
+                        <div class="team-member-info">
+                            <div class="team-member-name">Daniella Carvalho Gomes de Cerqueira</div>
+                            <div class="team-member-role">Coordenação dos cursos de saúde FBBR</div>
+                            <div class="team-member-desc">A sua ideia foi o start. Gratidão</div>
+                        </div>
                     </div>
-                    <div class="faq-answer">
-                        <p>Para contribuir com materiais, envie um e-mail para contato@fbbrodonto.com.br com o assunto "Contribuição de Material". Anexe os arquivos ou links para os materiais que deseja compartilhar, juntamente com uma breve descrição. Nossa equipe irá revisar o conteúdo e, se aprovado, ele será adicionado à plataforma com os devidos créditos.</p>
+                    
+                    <div class="team-member">
+                        <div class="team-member-img">
+                            <img src="assets/images/placeholder-person.jpg" alt="Felipe">
+                        </div>
+                        <div class="team-member-info">
+                            <div class="team-member-name">Felipe</div>
+                            <div class="team-member-role">Coordenador do curso de Odontologia</div>
+                            <div class="team-member-desc">Obrigado pelas dicas e apoio.</div>
+                        </div>
                     </div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>Os materiais do FBBR_Odonto são realmente gratuitos?</span>
-                        <i class="fas fa-chevron-down"></i>
+                    
+                    <div class="team-member">
+                        <div class="team-member-img">
+                            <img src="assets/images/placeholder-person.jpg" alt="Prof. Eric">
+                        </div>
+                        <div class="team-member-info">
+                            <div class="team-member-name">Prof. Eric</div>
+                            <div class="team-member-role">Professor</div>
+                            <div class="team-member-desc">Suas dicas deram vida ao projeto. Fundamental pelas dicas e apoio e incentivos.</div>
+                        </div>
                     </div>
-                    <div class="faq-answer">
-                        <p>Sim, todos os materiais disponibilizados no FBBR_Odonto são completamente gratuitos. Nossa missão é democratizar o acesso ao conhecimento odontológico de qualidade, permitindo que estudantes e profissionais possam aprimorar seus conhecimentos sem barreiras financeiras.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>Como funciona o DON_FBBR, a inteligência artificial do site?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>O DON_FBBR é nossa inteligência artificial especializada em odontologia, desenvolvida para auxiliar seus estudos e responder suas dúvidas sobre qualquer especialidade odontológica. Ele foi treinado com base em materiais acadêmicos e pode ajudar a encontrar conteúdos específicos, explicar conceitos e direcionar para os materiais mais adequados às suas necessidades de estudo.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>Posso utilizar os materiais do FBBR_Odonto em meus estudos ou aulas?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Sim, você pode utilizar os materiais do FBBR_Odonto para fins educacionais e de estudo. Solicitamos apenas que, ao utilizar em apresentações ou compartilhamentos, mantenha a referência à fonte original (FBBR_Odonto) e aos autores dos materiais, respeitando os direitos autorais.</p>
-                    </div>
-                </div>
-                
-                <div class="faq-item">
-                    <div class="faq-question">
-                        <span>Como posso reportar erros ou sugerir melhorias no site?</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </div>
-                    <div class="faq-answer">
-                        <p>Para reportar erros, sugerir melhorias ou enviar feedback sobre o site, utilize o formulário de contato nesta página ou envie um e-mail para contato@fbbrodonto.com.br com o assunto "Feedback". Sua opinião é muito importante para continuarmos aprimorando a plataforma.</p>
+                    
+                    <div class="team-member">
+                        <div class="team-member-img">
+                            <img src="assets/images/placeholder-person.jpg" alt="Harrison Ribeiro Costa">
+                        </div>
+                        <div class="team-member-info">
+                            <div class="team-member-name">Harrison Ribeiro Costa</div>
+                            <div class="team-member-role">Desenvolvedor e Estudante</div>
+                            <div class="team-member-desc">Desenvolvedor e Estudante da Instituição em Odontologia</div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -385,20 +432,6 @@
         
         mobileMenuBtn.addEventListener('click', () => {
             menu.classList.toggle('show');
-        });
-
-        // FAQ Toggle
-        const faqQuestions = document.querySelectorAll('.faq-question');
-        
-        faqQuestions.forEach(question => {
-            question.addEventListener('click', () => {
-                // Toggle active class
-                question.classList.toggle('active');
-                
-                // Toggle answer visibility
-                const answer = question.nextElementSibling;
-                answer.classList.toggle('show');
-            });
         });
 
         // Form Submission
@@ -472,13 +505,15 @@
                     let response = "Desculpe, não entendi sua pergunta. Pode reformular?";
                     
                     if (message.toLowerCase().includes('contato') || message.toLowerCase().includes('falar')) {
-                        response = "Você pode entrar em contato com a equipe do FBBR_Odonto através do formulário nesta página ou pelo e-mail contato@fbbrodonto.com.br. Estamos sempre à disposição para ajudar!";
-                    } else if (message.toLowerCase().includes('contribuir') || message.toLowerCase().includes('material')) {
-                        response = "Para contribuir com materiais para o FBBR_Odonto, envie um e-mail para contato@fbbrodonto.com.br com o assunto 'Contribuição de Material'. Nossa equipe irá revisar e, se aprovado, o material será adicionado à plataforma com os devidos créditos.";
-                    } else if (message.toLowerCase().includes('erro') || message.toLowerCase().includes('bug')) {
-                        response = "Para reportar erros ou problemas no site, utilize o formulário de contato nesta página ou envie um e-mail para contato@fbbrodonto.com.br com o assunto 'Erro Reportado'. Agradecemos sua contribuição para melhorarmos a plataforma!";
-                    } else if (message.toLowerCase().includes('quem') || message.toLowerCase().includes('criador')) {
-                        response = "O FBBR_Odonto foi criado por Harrison Costa, com o objetivo de democratizar o acesso ao conhecimento odontológico de qualidade. A plataforma é mantida por uma equipe dedicada a oferecer o melhor conteúdo para estudantes e profissionais de odontologia.";
+                        response = "Você pode entrar em contato com a equipe do FBBR_Odonto através do formulário nesta página ou pelo e-mail vestibular@atmos.edu.br. Estamos sempre à disposição para ajudar!";
+                    } else if (message.toLowerCase().includes('endereço') || message.toLowerCase().includes('localização')) {
+                        response = "Nosso endereço é: Av. Alberto Passos, 294 - Centro, Cruz das Almas - BA, 44380-000.";
+                    } else if (message.toLowerCase().includes('telefone') || message.toLowerCase().includes('ligar')) {
+                        response = "Você pode nos contatar pelos telefones: (75) 3017-0879 ou (75) 98823-4776.";
+                    } else if (message.toLowerCase().includes('horário') || message.toLowerCase().includes('atendimento')) {
+                        response = "Nosso horário de atendimento é: Segunda a Sexta: 8h às 18h e Sábado: 8h às 12h.";
+                    } else if (message.toLowerCase().includes('equipe') || message.toLowerCase().includes('time')) {
+                        response = "Nossa equipe é composta por Daniella Carvalho (Coordenação dos cursos de saúde), Felipe (Coordenador do curso de Odontologia), Prof. Eric e Harrison Ribeiro Costa (Desenvolvedor e Estudante).";
                     }
                     
                     botMessageDiv.innerHTML = `<p><strong>DON_FBBR:</strong> ${response}</p>`;
